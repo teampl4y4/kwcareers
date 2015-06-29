@@ -1,0 +1,7 @@
+keller_williams_marketing_box:
+    resource: "@KellerWilliamsMarketingBoxBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

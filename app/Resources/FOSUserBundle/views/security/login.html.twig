@@ -1,0 +1,55 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+<section class="page-title-container">
+
+    <!-- .container_12 start -->
+    <div class="container_12">
+
+        <!-- .page-title start -->
+        <div class="page-title grid_12">
+            <div class="title">
+                <h1>Login</h1>
+            </div>
+
+            <ul class="breadcrumbs">
+                <li><a class="home" href="{{ path('_home') }}">Home</a></li>
+                <li>/</li>
+                <li><span class="active">Login</span></li>
+            </ul>
+        </div><!-- .page-title end -->
+    </div><!-- .container_12 end -->
+</section>
+
+
+<section id="content-wrapper">
+    <div class="container_12">
+
+        {% if error %}
+            <div class="error-box">
+                <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+            </div>
+        {% endif %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label for="username">E-Mail:</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="_password" required="required" />
+
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        </form>
+    </div>
+
+</section>
+
+{% endblock fos_user_content %}

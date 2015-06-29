@@ -1,0 +1,80 @@
+
+.fullwidthbanner-container, 
+.fullwidthbanner{
+    width: 100% !important;
+    position: relative;
+    padding: 0;
+    max-height: 413px !important;
+    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 60px;
+    background: url('../assets/bkg.png') repeat-x;
+    z-index: 2;
+}
+
+.caption-heading{
+    color: #000;
+    font: 41px/41px 'BebasRegular';
+}
+
+.caption-pink-bg{
+    color: #fff;
+    font: 24px/24px 'BebasRegular';
+    background: #c14fbb;
+    padding: 15px;
+}
+
+.caption-pink2-bg{
+    color: #fff;
+    font: 18px/18px 'Myriad Pro', sans-serif;
+    background: #7b3277;
+    padding: 15px;
+    white-space: normal !important;
+}
+
+.caption-pink-text{
+    color: #c14fbb;
+    font: 14px/14px 'BebasRegular';
+}
+
+.caption-white-bg{
+    color: #000;
+    font: 18px/18px 'Myriad Pro', sans-serif;
+    background: #fff;
+    padding: 15px;
+    opacity: 0.65;
+
+}
+
+.caption-simple-black{
+    color: #000;
+    font: 14px/14px 'Myriad Pro', sans-serif;
+    white-space: normal !important;
+}
+
+.caption-arrow:after{
+    content: "";
+    position: absolute;
+    bottom: -40px; 
+    left: 20px; 
+    width: 0px;
+    height: 0px;
+    border-top: 20px solid #c14fbb;
+    border-bottom: 20px solid transparent; 
+    border-right: 20px solid transparent; 
+    border-left: 20px solid transparent; 
+}
+
+/*	THE MEDIA CHOOSER TO SET DIFFERENT SIZES OF THE CONTAINER DEPENDING ON THE SCREEN SIZE    */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+}
