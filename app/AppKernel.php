@@ -16,7 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new KellerWilliams\Bundle\MarketingBoxBundle\KellerWilliamsMarketingBoxBundle(),
+            new KellerWilliams\Bundle\CareersBundle\KellerWilliamsCareersBundle(),
             new FOS\UserBundle\FOSUserBundle()
         );
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace KellerWilliams\Bundle\MarketingBoxBundle\DependencyInjection;
+namespace KellerWilliams\Bundle\CareersBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class KellerWilliamsMarketingBoxExtension extends Extension
+class KellerWilliamsCareersExtension extends Extension
 {
     /**
      * {@inheritdoc}

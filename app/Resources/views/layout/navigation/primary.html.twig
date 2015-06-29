@@ -1,0 +1,97 @@
+
+<!-- #nav-container start -->
+<section id="nav-container">
+
+    <section class="container_12">
+        <section class="grid_12">
+            <!-- #nav start -->
+            <nav id="nav">
+                <ul style="display: none;">
+                    <li class="current-menu-item">
+                        <span class="nav-icon icon-desktop"></span>
+                        <a href="{{ path('_home') }}">Home</a>
+                    </li>
+
+                    <li>
+                        <span class="nav-icon icon-camera"></span>
+                        <a href="#">Collateral</a>
+                        <ul style="visibility: hidden; display: block;">
+                            <li><a href="portfolio1.html">Business Cards</a></li>
+                            <li><a href="portfolio2.html">Flyers</a></li>
+                            <li><a href="portfolio2-alt.html">Postcards</a></li>
+                            <li><a href="portfolio3.html">Brochures</a></li>
+                            <li><a href="portfolio3-alt.html">Door Hangers</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span class="nav-icon icon-home"></span>
+                        <a href="#">Property Marketing</a>
+
+                        <ul style="display: none;">
+                            <li><a href="blog.html">Advanced Analytics</a></li>
+                            <li><a href="blog-alt.html">eEdge Integration</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span class="nav-icon icon-cogs"></span>
+                        <a href="#">Shortcodes</a>
+                        <ul style="visibility: hidden; display: block;">
+                            <li><a href="shortcodes.html">Page elements</a></li>
+                            <li><a href="#">Third level</a>
+                                <ul style="display: none;">
+                                    <li><a href="#">Menu item</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <span class="nav-icon icon-shopping-cart"></span>
+                        <a href="{{ path('fos_user_registration_register') }}"><b>Sign Up Today</b></a>
+                    </li>
+                </ul>
+            </nav><!-- #nav end -->
+
+            <!-- responsive navigation start -->
+            <select id="nav-responsive">
+                <option selected="" value="">Site Navigation...</option>
+
+                <option value="index.html">Home version 1</option>
+
+                <option value="about.html">About us</option>
+                <option value="services.html">Services</option>
+                <option value="faq.html">FAQ Page</option>
+                <option value="page-sidebar-left.html">Page sidebar left</option>
+                <option value="page-sidebar-right.html">Page sidebar right</option>
+                <option value="pricing.html">Pricing tables</option>
+
+                <option value="portfolio1.html">Portfolio 1 column</option>
+                <option value="portfolio2.html">Portfolio 2 columns</option>
+                <option value="portfolio2-alt.html">Portfolio 2 alternative</option>
+                <option value="portfolio3.html">Portfolio 3 columns</option>
+                <option value="portfolio3-alt.html">Portfolio 3 alternative</option>
+                <option value="portfolio4.html">Portfolio 4 columns</option>
+                <option value="portfolio4-alt.html">Portfolio 4 alternative</option>
+                <option value="portfolio-gallery.html">Portfolio gallery</option>
+                <option value="portfolio-single.html">Portfolio single</option>
+
+                <option value="blog.html">Blog default</option>
+                <option value="blog-alt.html">Blog alternative</option>
+                <option value="blog-single.html">Blog single</option>
+
+                <option value="shortcodes.html">Shortcodes</option>
+                <option value="contact.html">Contact</option>
+            </select><!-- responsive navigation end -->
+
+            <section id="search-box">
+                <form action="#" method="get">
+                    <input id="m_search" name="s" type="text" placeholder="Type and hit enter...">
+                    <input class="search-submit" type="submit">
+                </form>
+            </section>
+        </section><!-- .grid_12 end -->
+    </section><!-- .container_12 end -->
+
+</section><!-- #nav-container end -->

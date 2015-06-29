@@ -1,0 +1,70 @@
+
+<!-- stylesheets -->
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/css/basic.css') }}" />
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/css/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/css/responsive.css') }}" />
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/css/red.css') }}" />
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/css/prettyPhoto.css') }}" media="screen" />
+
+<!-- revolution slider settings -->
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kellerwilliamscareers/rs-plugin/css/settings.css') }}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/kellerwilliamscareers/rs-plugin/css/revolution.css') }}" media="screen" />
+
+<!-- Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/pixons/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/font-awesome/css/font-awesome.min.css') }}" />
+
+<!--[if lt IE 9]>
+<script src="{{ asset('bundles/kellerwilliamscareers/js/html5shiv.js') }}"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="{{ asset('bundles/kellerwilliamscareers/js/selectivizr-min.js') }}"></script>
+<![endif]-->
+
+<!--[if IE 8]>
+<link rel="stylesheet" href="{{ asset('bundles/kellerwilliamscareers/css/ie8.css') }}'" media="screen" />
+<![endif]-->
+
+{% block stylesheets %}{% endblock %}
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+</head>
+<body>
+
+<section id="header-wrapper" class="clearfix">
+    <!-- #header start -->
+    <header id="header" class="clearfix">
+
+        <!-- #logo start -->
+        <section id="logo">
+            <a href="index.html">
+                <img src="http://www.kw.com/images/kw_images/KW_email_Signature_10-18-2013.png" alt="logo">
+            </a>
+        </section><!-- #logo end -->
+
+        <!-- contact-info-container -->
+        <section id="contact-info-container">
+            <ul class="info">
+                <li>
+                    <a href="{{ path('fos_user_security_login') }}">Login</a> |
+                    <a href="{{ path('fos_user_registration_register') }}">Sign Up</a>
+                </li>
+            </ul>
+
+            <ul class="social-links">
+                <li><a href="#" class="pixons-youtube"></a></li>
+                <li><a href="#" class="pixons-facebook-1"></a></li>
+                <li><a href="#" class="pixons-twitter-1"></a></li>
+            </ul>
+        </section><!-- .contact-info-container end -->
+    </header><!-- #header end -->
+
+    {{ include('layout/navigation/primary.html.twig') }}
+
+</section>
+
+<div class="top-shadow"></div>

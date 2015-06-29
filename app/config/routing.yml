@@ -1,5 +1,5 @@
 keller_williams_marketing_box:
-    resource: "@KellerWilliamsMarketingBoxBundle/Controller/"
+    resource: "@KellerWilliamsCareersBundle/Controller/"
     type:     annotation
     prefix:   /
 
