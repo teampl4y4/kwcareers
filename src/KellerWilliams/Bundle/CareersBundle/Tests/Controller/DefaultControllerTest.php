@@ -1,6 +1,6 @@
 <?php
 
-namespace KellerWilliams\Bundle\MarketingBoxBundle\Tests\Controller;
+namespace KellerWilliams\Bundle\CareersBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
