@@ -84,3 +84,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+easy_admin:
+    site_name: 'KW Careers'
+    design:
+        brand_color: '#9b1d01'
+        color_scheme: 'light'
+    entities:
+        - KellerWilliams\Bundle\CareersBundle\Entity\User
+        - KellerWilliams\Bundle\CareersBundle\Entity\MarketCenter
