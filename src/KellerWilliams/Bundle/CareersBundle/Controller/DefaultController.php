@@ -16,4 +16,14 @@ class DefaultController extends Controller
     {
         return array('name' => 'Josh');
     }
+
+    /**
+     * @Route("/find-office", name="_kw_find_office")
+     * @Template()
+     */
+    public function findOfficeAction()
+    {
+        return array();
+    }
+
 }

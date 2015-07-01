@@ -4,4 +4,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <services>
+        <service id="acme.demobundle.calendar_listener" class="KellerWilliams\Bundle\CareersBundle\EventListener\CalendarEventListener">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="kernel.event_listener" event="calendar.load_events" method="loadEvents" />
+        </service>
+
+    </services>
+
 </container>

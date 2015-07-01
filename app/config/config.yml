@@ -91,5 +91,7 @@ easy_admin:
         brand_color: '#9b1d01'
         color_scheme: 'light'
     entities:
-        - KellerWilliams\Bundle\CareersBundle\Entity\User
+#        - KellerWilliams\Bundle\CareersBundle\Entity\User
         - KellerWilliams\Bundle\CareersBundle\Entity\MarketCenter
+        - KellerWilliams\Bundle\CareersBundle\Entity\News
+        - KellerWilliams\Bundle\CareersBundle\Entity\Event
