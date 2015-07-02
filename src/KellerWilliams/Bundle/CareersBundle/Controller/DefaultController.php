@@ -23,7 +23,13 @@ class DefaultController extends Controller
      */
     public function findOfficeAction()
     {
-        return array();
+
+        /** @var MarketCenter $em */
+        $marketCenter = $this->getDoctrine()
+            ->getRepository('KellerWilliamsCareersBundle:MarketCenter')
+            ->findOneBy(array('uid' => 123));
+
+        return array('marketCenter' => $marketCenter);
     }
 
 }

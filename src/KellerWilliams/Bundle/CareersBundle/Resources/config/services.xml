@@ -10,6 +10,12 @@
             <tag name="kernel.event_listener" event="calendar.load_events" method="loadEvents" />
         </service>
 
+        <service id="kw.berke" class="KellerWilliams\Bundle\CareersBundle\Service\Berke">
+            <argument>%berk_api%</argument>
+            <argument>%berk_url%</argument>
+            <argument>%berk_return_format%</argument>
+        </service>
+
     </services>
 
 </container>

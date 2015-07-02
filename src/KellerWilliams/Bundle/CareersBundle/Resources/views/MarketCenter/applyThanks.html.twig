@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+
+<br>
+<section id="content-wrapper">
+
+    <!-- .container_12 start -->
+    <div class="container_12">
+        <!-- .grid_12 start -->
+        <article class="grid_12">
+
+            <!-- .entry-note start -->
+            <section class="entry-note">
+                <h1>Thanks for Applying to <span class="text-color">{{ mc.name }}</span>.</h1>
+
+            </section><!-- entry-note end -->
+        </article><!-- .grid_12 end -->
+
+    </div>
+
+</section>
+
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

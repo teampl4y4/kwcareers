@@ -95,3 +95,4 @@ easy_admin:
         - KellerWilliams\Bundle\CareersBundle\Entity\MarketCenter
         - KellerWilliams\Bundle\CareersBundle\Entity\News
         - KellerWilliams\Bundle\CareersBundle\Entity\Event
+        - KellerWilliams\Bundle\CareersBundle\Entity\Applicant

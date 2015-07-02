@@ -2,7 +2,9 @@
 
 namespace KellerWilliams\Bundle\CareersBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * MarketCenter
@@ -56,6 +58,15 @@ class MarketCenter
      */
     private $description;
 
+    /**
+     * @OneToMany(targetEntity="Applicant", mappedBy="marketCenter", cascade={"persist"}, orphanRemoval=true)
+     */
+    private $applicants;
+
+    public function __construct()
+    {
+        $this->applicants = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -180,5 +191,23 @@ class MarketCenter
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set applicants for a MarketCenter
+     * @param ArrayCollection $applicants
+     */
+    public function setApplicants(ArrayCollection $applicants)
+    {
+        $this->applicants = $applicants;
+    }
+
+    /**
+     * Get applicants for a MarketCenter
+     * @return ArrayCollection
+     */
+    public function getApplicants()
+    {
+        return $this->applicants;
     }
 }
