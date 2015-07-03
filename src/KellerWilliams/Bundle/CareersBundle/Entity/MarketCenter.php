@@ -210,4 +210,9 @@ class MarketCenter
     {
         return $this->applicants;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

@@ -16,4 +16,14 @@ class PlatformController extends Controller
     {
         return new Response('Admin page!');
     }
+
+    /**
+     * @param $applicantId
+     * @Template()
+     * @Route("/admin/callApplicant/{applicantId}", name="_kw_call_applicant")
+     */
+    public function callApplicantAction($applicantId)
+    {
+        return array();
+    }
 }

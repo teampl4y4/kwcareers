@@ -27,6 +27,17 @@ class MarketCenterController extends Controller
     }
 
     /**
+     * @param $uid
+     * @Route("/market-center/{uid}/contact", name="_kw_mc_contact")
+     * @Template()
+     */
+    public function contactAction($uid)
+    {
+        $marketCenter = $this->getMarketCenterOffUid($uid);
+        return array('mc' => $marketCenter);
+    }
+
+    /**
      * @Route("/market-center/{uid}/apply", name="_kw_mc_apply")
      * @Template()
      */
@@ -46,6 +57,12 @@ class MarketCenterController extends Controller
             $em = $this->get('doctrine')->getEntityManager();
 
             $applicant->setMarketCenter($marketCenter);
+
+            //Let's create a berke assessment and send the invitation to the candidate
+            /** @var Berke $berke */
+            $berke     = $this->get('kw.berke');
+            $applicant = $berke->createAssessment($applicant);
+            $berke->sendAssessmentInvite($applicant);
 
             $em->persist($applicant);
             $em->flush();

@@ -1,35 +1,539 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-<link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
 
-<br>
-<section id="content-wrapper">
+    <div class="rs-wrapper">
 
-    <!-- .container_12 start -->
-    <div class="container_12">
-        <!-- .grid_12 start -->
-        <article class="grid_12">
+        <div class="fullwidthbanner-container">
 
-            <!-- .entry-note start -->
-            <section class="entry-note">
-                <h1>Welcome to <span class="text-color">{{ mc.name }}</span>. Lorem Ipsum Goes Here.</h1>
-                <p>
-                    {{ mc.description }}
-                </p>
-                <h2><a href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}">Apply Today!</a></h2>
-            </section><!-- entry-note end -->
-        </article><!-- .grid_12 end -->
+            <div class="fullwidthbanner tp-simpleresponsive" style="height: 443px;">
+                <ul style="display: block;">
 
-        <h2>Calendar</h2>
-        {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+                    <li data-transition="slotzoom-horizontal" data-slotamount="15" style="visibility: visible; left: 0px; top: 0px; z-index: 20; opacity: 1;">
+                        <div class="slotholder"><img src="{{ asset('bundles/kellerwilliamscareers/stockphotos/whitehouse.jpg') }}" alt="background" class="defaultimg" style="width: 1920px; height: 413px; position: absolute; left: -455.5px; top: 0px; opacity: 1;"></div>
+                        <div class="caption lfl regular_title tp-caption start" data-x="335" data-y="90" data-speed="700" data-start="2000" data-easing="easeOutBack" style="font-size: 30px; padding: 3px 5px; margin: 0px; border: 0px; line-height: 32px; white-space: nowrap; opacity: 1; left: 369.5px; top: 90px; transform: scale(1, 1) rotate(0deg); visibility: visible;">Join the {{ mc.name }} Family</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="390" data-y="160" data-speed="700" data-start="2400" data-easing="easeOutBack" style="font-size: 18px; padding: 7px 15px 7px 25px; margin: 0px; border: 0px; line-height: 15px; white-space: nowrap; opacity: 1; left: 424.5px; top: 160px; transform: scale(1, 1) rotate(0deg); visibility: visible;">The largest in the world</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="390" data-y="202" data-speed="700" data-start="2900" data-easing="easeOutBack" style="font-size: 18px; padding: 7px 15px 7px 25px; margin: 0px; border: 0px; line-height: 15px; white-space: nowrap; opacity: 1; left: 424.5px; top: 202px; transform: scale(1, 1) rotate(0deg); visibility: visible;">Some other compelling reasong</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="390" data-y="242" data-speed="700" data-start="3200" data-easing="easeOutBack" style="font-size: 18px; padding: 7px 15px 7px 25px; margin: 0px; border: 0px; line-height: 15px; white-space: nowrap; opacity: 1; left: 424.5px; top: 242px; transform: scale(1, 1) rotate(0deg); visibility: visible;">Annie Rocks!!</div>
 
+                        <div class="caption lfr start" data-x="365" data-y="282" data-speed="700" data-start="3500" data-easing="easeOutBack" style="font-size: 18px; padding: 7px 15px 7px 25px; margin: 0px; border: 0px; line-height: 15px; white-space: nowrap; opacity: 1; left: 400px; top: 282px; transform: scale(1, 1) rotate(0deg); visibility: visible;">
+                            <div class="note-btn">
+                                <a class="btn-big btn-color" href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}">
+                                    <span>Apply Today!</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <li data-transition="3dcurtain-vertical" data-slotamount="10">
+                        <div class="slotholder"><img src="{{ asset('bundles/kellerwilliamscareers/img/slider/slide12.jpg') }}" alt="background" class="defaultimg" style="width: 1920px; height: 413px; position: absolute; left: -455.5px; top: 0px; opacity: 0;"></div>
+                        <div class="caption lfl regular_title2 tp-caption start" data-x="460" data-y="90" data-speed="700" data-start="2000" data-easing="easeOutBack" style="width:230px">RSVP To Event:</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="508" data-y="160" data-speed="700" data-start="2400" data-easing="easeOutBack">Professional Business Sites</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="508" data-y="202" data-speed="700" data-start="2900" data-easing="easeOutBack">Creative Portfolio Layouts</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="508" data-y="242" data-speed="700" data-start="3200" data-easing="easeOutBack">All Types of Small Business</div>
+                        <div class="caption lfr start" data-x="480" data-y="282" data-speed="700" data-start="3500" data-easing="easeOutBack" style="font-size: 18px; padding: 7px 15px 7px 25px; margin: 0px; border: 0px; line-height: 15px; white-space: nowrap; opacity: 1; left: 510px; top: 282px; transform: scale(1, 1) rotate(0deg); visibility: hidden;">
+                            <div class="note-btn">
+                                <a class="btn-big btn-color" href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}">
+                                    <span>RSVP Today!</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li data-transition="3dcurtain-horizontal" data-slotamount="10" style="visibility: visible; left: 0px; top: 0px; z-index: 18; opacity: 0;">
+                        <div class="slotholder"><img src="{{ asset('bundles/kellerwilliamscareers/img/slider/slide13.jpg') }}" alt="background" class="defaultimg" style="width: 1920px; height: 413px; position: absolute; left: -455.5px; top: 0px; opacity: 0;"></div>
+                        <div class="caption lfl regular_title3 tp-caption start" data-x="460" data-y="90" data-speed="700" data-start="2000" data-easing="easeOutBack" style="left: -457px;">Creative Side of Metropolis</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="508" data-y="160" data-speed="700" data-start="2400" data-easing="easeOutBack" style="left: 1029px;">Showcase Your Creative Work</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="508" data-y="202" data-speed="700" data-start="2900" data-easing="easeOutBack" style="left: 1029px;">Grab Attention from Your Clients</div>
+                        <div class="caption lfr regular_subtitle tp-caption start" data-x="508" data-y="242" data-speed="700" data-start="3200" data-easing="easeOutBack" style="left: 1029px;">Choose One of 5 Color Styles</div>
+                    </li>
+                </ul>
+                <div class="tp-loader" style="display: none;"></div><div class="tp-bannertimer" style="visibility: hidden; width: 43.7509665854344%; overflow: hidden;"></div></div>
+            <div style="visibility: visible; position: absolute; left: 0px; top: 206px; opacity: 0;" class="tp-leftarrow tparrows round large"></div><div style="visibility: visible; position: absolute; left: 960px; top: 219px; opacity: 0;" class="tp-rightarrow tparrows round large"></div></div>
     </div>
 
-</section>
+    <section id="content-wrapper">
+
+        <!-- .container_12 start -->
+        <div class="container_12">
+            <!-- .grid_12 start -->
+            <article class="grid_12">
+
+                <!-- .entry-note start -->
+                <section class="entry-note">
+                    <h1>Welcome to <span class="text-color">Keller Williams</span>. Lorem Ipsum Goes Here.</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </section><!-- entry-note end -->
+            </article><!-- .grid_12 end -->
+
+            <!-- .grid_4 start -->
+            <article class="grid_4">
+                <div class="service-box-2-container">
+                    <div class="icon">
+                        <i class="icon-microphone"></i>
+                    </div>
+
+                    <section class="service-box-2">
+                        <div class="title">
+                            <a href="services.html">
+                                <h3>Our Philosiphy</h3>
+                            </a>
+                            <span>Lorem ipsum dolor sit amet adipiscing elit.</span>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper ornare est, non convallis ipsum cursus in. Praesent in dapibus lorem, sed laoreet dolor. Praesent.
+                            </p>
+                        </div>
+
+                        <div class="read-more-btn">
+                            <a href="#">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+
+                    </section><!-- .service-box-2 end -->
+                </div>
+
+            </article><!-- .grid_4 end -->
+
+            <!-- .grid_4 start -->
+            <article class="grid_4">
+                <div class="service-box-2-container">
+                    <div class="icon">
+                        <i class="icon-book"></i>
+                    </div>
+
+                    <section class="service-box-2">
+                        <div class="title">
+                            <a href="services.html">
+                                <h3>Our Training</h3>
+                            </a>
+                            <span>Lorem ipsum dolor sit amet adipiscing elit.</span>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper ornare est, non convallis ipsum cursus in. Praesent in dapibus lorem, sed laoreet dolor. Praesent.
+                            </p>
+                        </div>
+
+                        <div class="read-more-btn">
+                            <a href="#">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+
+                    </section><!-- .service-box-2 end -->
+                </div>
+
+            </article><!-- .grid_4 end -->
+
+            <!-- .grid_4 start -->
+            <article class="grid_4">
+                <div class="service-box-2-container">
+                    <div class="icon">
+                        <i class="icon-group"></i>
+                    </div>
+
+                    <section class="service-box-2">
+                        <div class="title">
+                            <a href="services.html">
+                                <h3>Our Culture</h3>
+                            </a>
+                            <span>Lorem ipsum dolor sit amet adipiscing elit.</span>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper ornare est, non convallis ipsum cursus in. Praesent in dapibus lorem, sed laoreet dolor. Praesent.
+                            </p>
+                        </div>
+
+                        <div class="read-more-btn">
+                            <a href="#">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+
+                    </section><!-- .service-box-2 end -->
+                </div>
+            </article><!-- .grid_4 end -->
+
+            <div class="clearfix"></div>
+
+            <article class="grid_12">
+
+                <!-- .entry-note start -->
+                <section class="section-title center">
+                    <div class="title-container">
+                        <section class="title">
+                            <h2>Proof in the Numbers</h2>
+                            <span>A deeper look into the numbers in joining Keller Williams.</span>
+                        </section>
+                    </div>
+                </section><!-- .section-title .center end -->
+
+
+                <p>numbers widget here</p>
+
+            </article><!-- .grid_12 end -->
+
+
+            <div class="clearfix"></div>
+
+            <!-- .grid_12 carousel-portfolio end -->
+            <article class="grid_12 carousel-portfolio">
+
+                <section class="section-title center">
+                    <div class="title-container">
+                        <section class="title">
+                            <h2>Meet Our Agents</h2>
+                            <span>A look into the Keller Williams family.</span>
+                        </section>
+                    </div>
+                </section><!-- .section-title .center end -->
+
+                <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; width: 960px; height: 222px; margin: 0px; overflow: hidden;">
+                    <ul id="foo2" class="carousel-li" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 4800px; height: 222px;">
+                        {% for i in 0..10 %}
+                            <li class="portfolio-style-2">
+                                <figure class="portfolio clearfix">
+                                    <div class="portfolio-image">
+                                        <a href="portfolio-single.html">
+                                            <img src="{{ asset('bundles/kellerwilliamscareers/img/portfolio/thumb/portfolio-1.jpg') }}" width="220" alt="portfolio">
+                                        </a>
+
+                                        <div class="portfolio-hover">
+                                            <div class="mask"></div>
+                                            <ul>
+                                                <li class="portfolio-zoom">
+                                                    <a href="{{ asset('bundles/kellerwilliamscareers/img/portfolio/thumb/portfolio-1.jpg') }}" data-gal="prettyPhoto[pp_gallery]">
+                                                        zoom
+                                                    </a>
+                                                </li>
+
+                                                <li class="portfolio-single">
+                                                    <a href="portfolio-single.html">single</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <figcaption>
+                                        <a class="title">Annie Switt</a>
+                                        <span class="subtitle">Austin, Tx</span>
+                                    </figcaption>
+                                </figure>
+                            </li><!-- portfolio-style-2 end -->
+                        {% endfor %}
+                    </ul>
+                </div><!-- .carousel-li end -->
+
+                <div class="clearfix"></div>
+
+                <div class="carousel-pagination" id="foo2_pag" style="display: block;">
+                    <a href="#" class="selected"><span>1</span></a>
+                    <a href="#"><span>2</span></a>
+                    <a href="#"><span>3</span></a>
+                    <a href="#"><span>4</span></a>
+                    <a href="#"><span>5</span></a>
+                    <a href="#"><span>6</span></a>
+                    <a href="#"><span>7</span></a>
+                    <a href="#"><span>8</span></a>
+                </div>
+
+            </article><!-- .grid_12 carousel-portfolio end -->
+
+            <article class="grid_12 latest-blog-posts" style="margin-bottom: 0px;">
+                <!-- .section-title .center start -->
+                <section class="section-title center">
+
+                    <!-- .ttile-container .carousel start -->
+                    <div class="title-container">
+                        <section class="title">
+                            <h2>Our Tools</h2>
+                            <span>Lorem ipsum lorem ipsum</span>
+                        </section>
+                    </div><!-- .title-container .carousel end -->
+                </section><!-- .section-title .center end -->
+
+                <!-- .grid_6 start -->
+                <article class="grid_6 alpha">
+                    <section class="post-info">
+                        <img src="img/blog/small-1.jpg" alt="blog-image">
+
+                        <div class="comments">
+                            <a href="blog-single.html">2 comments</a>
+                        </div>
+                    </section>
+
+                    <section class="post-body">
+                        <div class="post-meta">
+                            <div class="category">
+                                <i class="icon-edit"></i>
+                            </div>
+
+                            <div class="title-date">
+                                <a href="blog-single.html">
+                                    <h6>There are so many good reasons</h6>
+                                </a>
+                                <span class="date">april 22, 2013</span>
+                            </div>
+                        </div>
+
+                        <p>
+                            Typi non habent claritatem insitam; est usus
+                            legentis in iis qui facit eorum claritatem.
+                            Investigationes demonstraverunt lectores
+                            legere me lius...
+                        </p>
+
+                        <div class="read-more-btn">
+                            <a href="blog-single.html">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+                    </section><!-- .post-body end -->
+
+                </article><!-- .grid_6 end -->
+
+                <!-- .grid_6 start -->
+                <article class="grid_6 omega">
+                    <section class="post-info">
+                        <img src="img/blog/small-2.jpg" alt="blog-image">
+
+                        <div class="comments">
+                            <a href="blog-single.html">2 comments</a>
+                        </div>
+                    </section>
+
+                    <section class="post-body">
+                        <div class="post-meta">
+                            <div class="category">
+                                <i class="icon-edit"></i>
+                            </div>
+
+                            <div class="title-date">
+                                <a href="blog-single.html">
+                                    <h6>Why Choose Metropolis</h6>
+                                </a>
+
+                                <span class="date">april 22, 2013</span>
+                            </div>
+                        </div>
+
+                        <p>
+                            Typi non habent claritatem insitam; est usus
+                            legentis in iis qui facit eorum claritatem.
+                            Investigationes demonstraverunt lectores
+                            legere me lius...
+                        </p>
+
+                        <div class="read-more-btn">
+                            <a href="blog-single.html">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+                    </section><!-- .post-body end -->
+
+                </article><!-- .grid_6 end -->
+
+                <div class="clearfix"></div>
+
+                <!-- .grid_6 start -->
+                <article class="grid_6 alpha">
+                    <section class="post-info">
+                        <img src="img/blog/small-3.jpg" alt="blog-image">
+
+                        <div class="comments">
+                            <a href="blog-single.html">2 comments</a>
+                        </div>
+                    </section>
+
+                    <section class="post-body">
+                        <div class="post-meta">
+                            <div class="category">
+                                <i class="icon-edit"></i>
+                            </div>
+
+                            <div class="title-date">
+                                <a href="blog-single.html">
+                                    <h6>Clever Tagline Here</h6>
+                                </a>
+
+                                <span class="date">april 22, 2013</span>
+                            </div>
+                        </div>
+
+                        <p>
+                            Typi non habent claritatem insitam; est usus
+                            legentis in iis qui facit eorum claritatem.
+                            Investigationes demonstraverunt lectores
+                            legere me lius...
+                        </p>
+
+                        <div class="read-more-btn">
+                            <a href="blog-single.html">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+                    </section><!-- .post-body end -->
+
+                </article><!-- .grid_6 end -->
+
+                <!-- .grid_6 start -->
+                <article class="grid_6 omega">
+                    <section class="post-info">
+                        <img src="img/blog/small-4.jpg" alt="blog-image">
+
+                        <div class="comments">
+                            <a href="blog-single.html">2 comments</a>
+                        </div>
+                    </section>
+
+                    <section class="post-body">
+                        <div class="post-meta">
+                            <div class="category">
+                                <i class="icon-edit"></i>
+                            </div>
+
+                            <div class="title-date">
+                                <a href="blog-single.html">
+                                    <h6>Ideal Choice for Your Business</h6>
+                                </a>
+
+                                <span class="date">april 22, 2013</span>
+                            </div>
+                        </div>
+
+                        <p>
+                            Typi non habent claritatem insitam; est usus
+                            legentis in iis qui facit eorum claritatem.
+                            Investigationes demonstraverunt lectores
+                            legere me lius...
+                        </p>
+
+                        <div class="read-more-btn">
+                            <a href="blog-single.html">Read more</a>
+                            <span class="plus">+</span>
+                        </div>
+                    </section><!-- .post-body end -->
+
+                </article><!-- .grid_6 end -->
+            </article><!-- .grid_12 end -->
+
+            <div class="clearfix"></div>
+
+            <!-- .grid_12 carousel-portfolio end -->
+            <article class="grid_12 carousel-portfolio">
+
+                <section class="section-title center">
+                    <div class="title-container">
+                        <section class="title">
+                            <h2>Ask Our CEO</h2>
+                        </section>
+                    </div>
+
+                </section><!-- .section-title .center end -->
+                <iframe width="100%" height="510" src="https://www.youtube.com/embed/O28SW1TCdkk" frameborder="0" allowfullscreen></iframe>
+
+            </article>
+
+
+        </div><!-- .container_12 end -->
+
+    </section>
 
 {% endblock %}
+
 {% block javascripts %}
-<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-1.8.2.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kellerwilliamscareers/rs-plugin/js/jquery.themepunch.plugins.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kellerwilliamscareers/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+
+    <script>
+        /* <![CDATA[ */
+        // NEWSLETTER FORM AJAX SUBMIT
+        $('.newsletter .submit').on('click', function(event){
+            event.preventDefault();
+            var email = $('.email').val();
+            var form_data = new Array({ 'Email' : email});
+            $.ajax({
+                type: 'POST',
+                url: "contact.php",
+                data: ({'action': 'newsletter', 'form_data' : form_data})
+            }).done(function(data) {
+                alert(data);
+            });
+        });
+
+        // REVOLUTION SLIDER
+        jQuery(document).ready(function() {
+
+            if (jQuery.fn.cssOriginal !== undefined)   // CHECK IF fn.css already extended
+                jQuery.fn.css = jQuery.fn.cssOriginal;
+
+            jQuery('.fullwidthbanner').revolution(
+                    {
+                        delay: 50000,
+                        startheight: 413,
+                        startwidth: 940,
+                        hideThumbs: 200,
+                        thumbWidth: 100,
+                        thumbHeight: 50,
+                        thumbAmount: 5,
+                        navigationType: "none",
+                        navigationArrows: "verticalcentered",
+                        navigationStyle: "round",
+                        navigationHAlign: "right",
+                        navigationVAlign: "top",
+                        navigationHOffset: 0,
+                        navigationVOffset: 20,
+                        soloArrowLeftHalign: "left",
+                        soloArrowLeftValign: "center",
+                        soloArrowLeftHOffset: 20,
+                        soloArrowLeftVOffset: 0,
+                        soloArrowRightHalign: "right",
+                        soloArrowRightValign: "center",
+                        soloArrowRightHOffset: 20,
+                        soloArrowRightVOffset: 0,
+                        touchenabled: "on",
+                        onHoverStop: "on",
+                        navOffsetHorizontal: 0,
+                        navOffsetVertical: 20,
+                        hideCaptionAtLimit: 0,
+                        hideAllCaptionAtLilmit: 0,
+                        hideSliderAtLimit: 0,
+                        stopAtSlide: -1,
+                        stopAfterLoops: -1,
+                        shadow: 0,
+                        fullWidth: "on"
+
+                    });
+        });
+
+        // PORTFOLIO CAROUSEL
+        $("#foo2").carouFredSel({
+            auto: false,
+            scroll: 1,
+            pagination: "#foo2_pag",
+            width: 'variable',
+            height: 'variable',
+            items: {
+                width: 'auto',
+                visible: 4
+            }
+        });
+
+        // TESTIMONIALS ALTERNATIVE VERSION
+        $('.testimonials-alternative-nav').on('click', 'a', function(e){
+            e.preventDefault();
+            var $current = $(this);
+            $('.testimonials-alternative-nav a').removeClass();
+            $('.testimonials-alternative-content .content').hide();
+            $current.addClass('active');
+            var contentID = $current.attr('href');
+            $('.testimonials-alternative-content').find(contentID).fadeIn();
+        });
+
+        /* ]]> */
+    </script>
+
 {% endblock %}

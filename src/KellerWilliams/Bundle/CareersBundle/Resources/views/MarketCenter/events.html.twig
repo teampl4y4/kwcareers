@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+
+<br>
+<section id="content-wrapper">
+
+    <!-- .container_12 start -->
+    <div class="container_12">
+        <!-- .grid_12 start -->
+        <article class="grid_12">
+
+            <!-- .entry-note start -->
+            <section class="entry-note">
+                <h1>Welcome to <span class="text-color">{{ mc.name }}</span>. Lorem Ipsum Goes Here.</h1>
+                <p>
+                    {{ mc.description }}
+                </p>
+                <h2><a href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}">Apply Today!</a></h2>
+            </section><!-- entry-note end -->
+        </article><!-- .grid_12 end -->
+
+        <h2>Calendar</h2>
+        {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+
+    </div>
+
+</section>
+
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-1.8.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+{% endblock %}

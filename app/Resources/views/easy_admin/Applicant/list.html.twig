@@ -1,0 +1,103 @@
+{% trans_default_domain "EasyAdminBundle" %}
+{% extends '@EasyAdmin/default/list.html.twig' %}
+{% block main %}
+
+    <div>
+        {% set _list_item_actions = easyadmin_get_actions_for_list_item(_entity_config.name) %}
+
+        <table class="table">
+            <thead>
+            {% block table_head %}
+                <tr>
+                    {% for field, metadata in fields %}
+                        {% set isSortingField = metadata.property == app.request.get('sortField') %}
+
+                        <th data-property-name="{{ metadata.property }}" class="{{ isSortingField ? 'sorted' : '' }} {{ metadata.virtual|default(false) ? 'virtual' : '' }} {{ metadata.dataType|lower }}">
+                            {% if isSortingField %}
+                                {% set sortDirection = ('DESC' == app.request.get('sortDirection')) ? 'ASC' : 'DESC' %}
+                                {% set _request_parameters = _request_parameters|merge({ sortField: metadata.property }) %}
+                            {% endif %}
+
+                            {% set _column_label =  metadata.label ? metadata.label|trans(_trans_parameters) : field|humanize %}
+
+                            {% if metadata.sortable %}
+                                <a href="{{ path('admin', _request_parameters|merge({ sortField: metadata.property, sortDirection: sortDirection|default('DESC') })) }}">
+                                    {% if isSortingField and sortDirection == 'DESC' %}
+                                        <i class="fa fa-caret-up"></i>
+                                    {% elseif isSortingField and sortDirection == 'ASC' %}
+                                        <i class="fa fa-caret-down"></i>
+                                    {% else %}
+                                        <i class="fa fa-sort"></i>
+                                    {% endif %}
+
+                                    {{ _column_label|raw }}
+                                </a>
+                            {% else %}
+                                <span>{{ _column_label|raw }}</span>
+                            {% endif %}
+                        </th>
+                    {% endfor %}
+
+                    {% if _list_item_actions|length > 0 %}
+                        <th>
+                            <span>{{ 'list.row_actions'|trans(_trans_parameters) }}</span>
+                        </th>
+                    {% endif %}
+                </tr>
+            {% endblock table_head %}
+            </thead>
+
+            <tbody>
+            {% block table_body %}
+                {% for item in paginator.currentPageResults %}
+                    {% set _item_id = attribute(item, _entity_config.primary_key_field_name) %}
+                    <tr data-id="{{ _item_id }}">
+                        {% for field, metadata in fields %}
+                            {% set isSortingField = metadata.property == app.request.get('sortField') %}
+                            {% set _column_label =  metadata.label ? metadata.label|trans(_trans_parameters) : field|humanize %}
+
+                            <td data-label="{{ _column_label }}" class="{{ isSortingField ? 'sorted' : '' }} {{ metadata.dataType|lower }}">
+                                {{ easyadmin_render_field_for_list_view(_entity_config.name, item, metadata) }}
+                            </td>
+                        {% endfor %}
+
+                        {% if _list_item_actions|length > 0 %}
+                            {% set _column_label =  'list.row_actions'|trans(_trans_parameters) %}
+                            <td data-label="{{ _column_label }}" class="actions">
+                                {% block item_actions %}
+                                    {% spaceless %}
+                                        {% for _action in _list_item_actions %}
+                                            {% if 'method' == _action.type %}
+                                                {% set _action_href = path('admin', _request_parameters|merge({ action: _action.name, id: _item_id })) %}
+                                            {% elseif 'route' == _action.type %}
+                                                {% set _action_href = path(_action.name, _request_parameters|merge({ action: _action.name, id: _item_id })) %}
+                                            {% endif %}
+
+                                            <a class="{{ _action.css_class|default('') }}" href="{{ _action_href }}">
+                                                {% if _action.icon %}<i class="fa fa-{{ _action.icon }}"></i>{% endif %}
+                                                {{ _action.label|trans({'%entity_name%': _entity_config.name|trans, '%entity_label%': _entity_config.label|trans, '%entity_id%': _item_id}) }}
+                                            </a>
+                                        {% endfor %}
+                                    {% endspaceless %}
+                                {% endblock item_actions %}
+                                <a href="{{ path('_kw_call_applicant', {'applicantId': _item_id}) }}">Call</a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="no-results" colspan="{{ _list_item_actions|length > 0 ? fields|length + 1 : fields|length }}">
+                            {{ 'search.no_results'|trans(_trans_parameters) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endblock table_body %}
+            </tbody>
+        </table>
+
+        {% block paginator %}
+            {{ include(_entity_config.templates.paginator) }}
+        {% endblock paginator %}
+    </div>
+
+{% endblock %}

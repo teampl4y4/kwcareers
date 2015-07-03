@@ -123,7 +123,7 @@ class Applicant
 
     /**
      * @var MarketCenter
-     * @ManyToOne(targetEntity="MarketCenter", cascade={"all"})
+     * @ManyToOne(targetEntity="MarketCenter", inversedBy="applicants", cascade={"all"})
      */
     private $marketCenter;
 
@@ -465,5 +465,15 @@ class Applicant
     public function setMarketCenter(MarketCenter $marketCenter)
     {
         $this->marketCenter = $marketCenter;
+    }
+
+    public function advanceStep()
+    {
+        $this->step++;
+    }
+
+    public function __toString()
+    {
+        return $this->firstName . ' ' . $this->lastName;
     }
 }

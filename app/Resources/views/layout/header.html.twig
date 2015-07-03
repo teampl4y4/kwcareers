@@ -49,10 +49,17 @@
         <!-- contact-info-container -->
         <section id="contact-info-container">
             <ul class="info">
+                {% if mc is not defined %}
                 <li>
                     <a href="#">Apply</a> |
-                    <a href="#">Find Market Center</a>
+                    <a href="{{ path('_kw_find_office') }}">Find an Office</a>
                 </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}">Apply</a> |
+                        <a href="{{ path('_home') }}">Corporate Site</a>
+                    </li>
+                {% endif %}
             </ul>
 
             <ul class="social-links">

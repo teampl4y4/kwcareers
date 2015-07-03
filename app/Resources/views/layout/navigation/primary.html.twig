@@ -6,21 +6,42 @@
         <section class="grid_12">
             <!-- #nav start -->
             <nav id="nav">
-                <ul style="display: none;">
-                    <li class="current-menu-item">
-                        <span class="nav-icon icon-desktop"></span>
-                        <a href="{{ path('_home') }}">Home</a>
-                    </li>
+                <ul style="play: none">
 
-                    <li>
-                        <span class="nav-icon icon-tags"></span>
-                        <a href="#">News</a>
-                        <ul style="visibility: hidden; display: block;">
-                            <li><a href="portfolio1.html">Keller Williams News</a></li>
-                            <li><a href="portfolio2.html">Industry News</a></li>
-                            <li><a href="portfolio2-alt.html">All News</a></li>
-                        </ul>
-                    </li>
+                    {% if mc is defined %}
+                        <li class="current-menu-item">
+                            <span class="nav-icon icon-desktop"></span>
+                            <a href="{{ path('_kw_mc', {uid: mc.uid}) }}">{{ mc.name }}</a>
+                        </li>
+                    {% else %}
+                        <li class="current-menu-item">
+                            <span class="nav-icon icon-desktop"></span>
+                            <a href="{{ path('_home') }}">Home</a>
+                        </li>
+                    {% endif %}
+
+                    {% if mc is defined %}
+                        <li>
+                            <span class="nav-icon icon-tags"></span>
+                            <a href="#">News</a>
+                            <ul style="visibility: hidden; display: block;">
+                                <li><a href="portfolio1.html">{{ mc.name }} News</a></li>
+                                <li><a href="portfolio1.html">Keller Williams News</a></li>
+                                <li><a href="portfolio2.html">Industry News</a></li>
+                                <li><a href="portfolio2-alt.html">All News</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li>
+                            <span class="nav-icon icon-tags"></span>
+                            <a href="#">News</a>
+                            <ul style="visibility: hidden; display: block;">
+                                <li><a href="portfolio1.html">Keller Williams News</a></li>
+                                <li><a href="portfolio2.html">Industry News</a></li>
+                                <li><a href="portfolio2-alt.html">All News</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
 
                     <li>
                         <span class="nav-icon icon-smile"></span>
@@ -34,20 +55,43 @@
                         </ul>
                     </li>
 
-                    <li>
-                        <span class="nav-icon icon-calendar"></span>
-                        <a href="#">Events</a>
-                    </li>
+                    {% if mc is defined %}
+                        <li>
+                            <span class="nav-icon icon-calendar"></span>
+                            <a href="#">MC Events</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <span class="nav-icon icon-calendar"></span>
+                            <a href="#">Events</a>
+                        </li>
+                    {% endif %}
 
+                    {% if mc is defined %}
+                        <li>
+                            <span class="nav-icon icon-user"></span>
+                            <a href="{{ path('_kw_mc_contact', {uid: mc.uid}) }}">Contact Us</a>
+                        </li>
+                    {% endif %}
+
+                    {% if mc is not defined %}
                     <li>
                         <span class="nav-icon icon-map-marker"></span>
                         <a href="{{ path('_kw_find_office') }}">Find an Office</a>
                     </li>
+                    {% endif %}
 
-                    <li>
-                        <span class="nav-icon icon-double-angle-right"></span>
-                        <a href="{{ path('fos_user_registration_register') }}"><b>Apply Today</b></a>
-                    </li>
+                    {% if mc is defined %}
+                        <li>
+                            <span class="nav-icon icon-double-angle-right"></span>
+                            <a href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}"><b>Apply Today</b></a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <span class="nav-icon icon-double-angle-right"></span>
+                            <a href="{{ path('fos_user_registration_register') }}"><b>Apply Today</b></a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav><!-- #nav end -->
 
