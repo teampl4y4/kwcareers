@@ -1,3 +1,8 @@
+keller_williams_subscription:
+    resource: "@KellerWilliamsSubscriptionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 keller_williams_marketing_box:
     resource: "@KellerWilliamsCareersBundle/Controller/"
     type:     annotation

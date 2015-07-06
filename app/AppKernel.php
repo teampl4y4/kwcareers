@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ADesigns\CalendarBundle\ADesignsCalendarBundle()
-
+,
+            new KellerWilliams\Bundle\SubscriptionBundle\KellerWilliamsSubscriptionBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

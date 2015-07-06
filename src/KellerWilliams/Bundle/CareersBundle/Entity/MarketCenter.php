@@ -59,6 +59,34 @@ class MarketCenter
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="opFirstName", type="string", length=255, nullable=true)
+     */
+    private $principleFirstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opLastName", type="string", length=255, nullable=true)
+     */
+    private $principleLastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opEmail", type="string", length=255, nullable=true)
+     */
+    private $principleEmail;
+
+    /**
+     * @var chargifyId
+     *
+     * @ORM\Column(name="chargifyId", type="integer", length=255, nullable=true)
+     */
+    private $chargifyId;
+
+    /**
      * @OneToMany(targetEntity="Applicant", mappedBy="marketCenter", cascade={"persist"}, orphanRemoval=true)
      */
     private $applicants;
@@ -191,6 +219,70 @@ class MarketCenter
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrincipleFirstName()
+    {
+        return $this->principleFirstName;
+    }
+
+    /**
+     * @param mixed $principleFirstName
+     */
+    public function setPrincipleFirstName($principleFirstName)
+    {
+        $this->principleFirstName = $principleFirstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrincipleLastName()
+    {
+        return $this->principleLastName;
+    }
+
+    /**
+     * @param string $principleLastName
+     */
+    public function setPrincipleLastName($principleLastName)
+    {
+        $this->principleLastName = $principleLastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrincipleEmail()
+    {
+        return $this->principleEmail;
+    }
+
+    /**
+     * @param string $principleEmail
+     */
+    public function setPrincipleEmail($principleEmail)
+    {
+        $this->principleEmail = $principleEmail;
+    }
+
+    /**
+     * @return chargifyId
+     */
+    public function getChargifyId()
+    {
+        return $this->chargifyId;
+    }
+
+    /**
+     * @param chargifyId $chargifyId
+     */
+    public function setChargifyId($chargifyId)
+    {
+        $this->chargifyId = $chargifyId;
     }
 
     /**

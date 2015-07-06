@@ -18,11 +18,10 @@ class PlatformController extends Controller
     }
 
     /**
-     * @param $applicantId
      * @Template()
-     * @Route("/admin/callApplicant/{applicantId}", name="_kw_call_applicant")
+     * @Route("/register", name="_kw_mc_register")
      */
-    public function callApplicantAction($applicantId)
+    public function registerAction()
     {
         return array();
     }

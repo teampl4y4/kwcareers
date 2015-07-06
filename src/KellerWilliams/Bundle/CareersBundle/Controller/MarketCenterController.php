@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use KellerWilliams\Bundle\CareersBundle\Entity;
 use KellerWilliams\Bundle\CareersBundle\Form;
 use KellerWilliams\Bundle\CareersBundle\Service\Berke;
+use KellerWilliams\Bundle\SubscriptionBundle\Service\Chargify;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -32,6 +33,17 @@ class MarketCenterController extends Controller
      * @Template()
      */
     public function contactAction($uid)
+    {
+        $marketCenter = $this->getMarketCenterOffUid($uid);
+        return array('mc' => $marketCenter);
+    }
+
+    /**
+     * @param $uid
+     * @Route("/market-center/{uid}/events", name="_kw_mc_contact")
+     * @Template()
+     */
+    public function eventsAction($uid)
     {
         $marketCenter = $this->getMarketCenterOffUid($uid);
         return array('mc' => $marketCenter);
