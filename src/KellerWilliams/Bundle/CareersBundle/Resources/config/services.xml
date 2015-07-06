@@ -16,6 +16,12 @@
             <argument>%berk_return_format%</argument>
         </service>
 
+        <service id="kw.chargify" class="KellerWilliams\Bundle\SubscriptionBundle\Service\Chargify">
+            <argument>%chargify_api%</argument>
+            <argument>%chargify_url%</argument>
+            <argument>%chargify_return_format%</argument>
+        </service>
+
     </services>
 
 </container>

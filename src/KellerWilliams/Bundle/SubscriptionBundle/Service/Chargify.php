@@ -4,6 +4,8 @@ namespace KellerWilliams\Bundle\SubscriptionBundle\Service;
 
 use KellerWilliams\Bundle\CareersBundle\Entity;
 use GuzzleHttp;
+use KellerWilliams\Bundle\SubscriptionBundle\Entity\Subscription;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Chargify
 {
@@ -97,8 +99,8 @@ class Chargify
         );
 
         $response = $this->client->post($uri, [
-            'form_params' => ['customer' => $params],
-            'auth' => [$this->apiKey, 'x']
+            'form_params'   => ['customer' => $params],
+            'auth'          => [$this->apiKey, 'x']
         ]);
 
         $body = json_decode($response->getBody());
@@ -108,22 +110,39 @@ class Chargify
     }
 
     /**
-     * @param Entity\MarketCenter $mc
+     * @param Subscription $subscription
+     * @return Subscription $subscription
      */
-    public function addSubscription(Entity\MarketCenter $mc)
+    public function addSubscription(Subscription $subscription)
     {
 
-    }
+        $uri = '/subscriptions.' . $this->format;
 
-//CONTROLLER EXAMPLE
-//$apiKey = 'i7vZvSpUhvO8yhpNti';
-//$url    = 'https://kwcareers.chargify.com';
-//
-//$chargify = new Chargify($apiKey, $url);
-//$chargify->addCustomerFromMarketCenter($marketCenter);
-//
-//$em = $this->get('doctrine')->getEntityManager();
-//$em->persist($marketCenter);
-//$em->flush();
+        $params = array(
+            'subscription' => [
+                'product_handle'    => (string) $subscription->getChargifyProductId(),
+                'customer_id'       => (string) $subscription->getChargifyCustomerId(),
+                'credit_card_attributes' => [
+                            'full_number'        => (string) $subscription->getCreditcardNumber(),
+                            'expiration_month'   => (string) $subscription->getExpirationMonth(),
+                            'expiration_year'    => (string) $subscription->getExpirationYear()
+        ]]);
+
+        $response = $this->client->post($uri, [
+            'content-type' => 'application/json',
+            'json'    => $params,
+            'auth'   => [ $this->apiKey, 'x' ]
+        ]);
+
+
+        $body = json_decode($response->getBody());
+
+        if($response->getStatusCode() != 201) {
+            throw new Exception('Something went wrong creating a subscription');
+        }
+
+        return $subscription;
+
+    }
 
 }

@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <br>
+    <section id="content-wrapper">
+
+        <!-- .container_12 start -->
+        <div class="container_12">
+            <!-- .grid_12 start -->
+            <article class="grid_12">
+
+                <!-- .entry-note start -->
+                <section class="entry-note">
+                    <h1>Register <span class="text-color">Your Market Center!</span></h1>
+                    <h2>Step 2 of 2</h2>
+
+                    <form action="{{ path('_kw_mc_payment') }}" method="post" {{ form_enctype(form) }} class="Apply">
+
+                        {{ form_errors(form.creditcardNumber) }}
+                        {{ form_errors(form.expirationMonth) }}
+                        {{ form_errors(form.expirationYear) }}
+                        {{ form_errors(form) }}
+
+                        <uL>
+
+                            <li>
+                                {{ form_label(form.creditcardNumber, '*Credit Card Number:') }}
+                                {{ form_widget(form.creditcardNumber) }}
+                            </li>
+
+                            <li>
+                                {{ form_label(form.expirationMonth, '*Exp Month:') }}
+                                {{ form_widget(form.expirationMonth) }}
+                            </li>
+
+                            <li>
+                                {{ form_label(form.expirationYear, '*Exp Year:') }}
+                                {{ form_widget(form.expirationYear) }}
+                            </li>
+
+                            <li>
+                            {{ form_rest(form) }}
+                            </li>
+
+                            <input type="submit" value="Sign Up!"/>
+
+                        </uL>
+                    </form>
+
+                </section><!-- entry-note end -->
+            </article><!-- .grid_12 end -->
+
+        </div>
+
+    </section>
+
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

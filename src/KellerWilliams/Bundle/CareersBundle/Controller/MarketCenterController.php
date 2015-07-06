@@ -40,7 +40,7 @@ class MarketCenterController extends Controller
 
     /**
      * @param $uid
-     * @Route("/market-center/{uid}/events", name="_kw_mc_contact")
+     * @Route("/market-center/{uid}/events", name="_kw_mc_events")
      * @Template()
      */
     public function eventsAction($uid)

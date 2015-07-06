@@ -22,3 +22,9 @@ parameters:
     berk_api:               ~
     berk_url:               https://site.BerkeAssessment.com/api/CreateAssessment
     berk_return_format:     json
+
+    #chargify
+    chargify_api:                   ~
+    chargify_url:                   https://kwcareers.chargify.com
+    chargify_return_format:         json
+    chargify_main_product_handle:   kw-careers-mc-site

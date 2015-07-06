@@ -5,6 +5,7 @@ namespace KellerWilliams\Bundle\CareersBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * MarketCenter
@@ -38,18 +39,60 @@ class MarketCenter
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="state", type="string", length=255)
+     */
+    private $state;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     */
+    private $country;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="zip", type="integer")
+     */
+    private $zip;
+
+    /**
      * @var float
      *
-     * @ORM\Column(name="lat", type="float")
+     * @ORM\Column(name="lat", type="float", nullable=true)
      */
     private $lat;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lng", type="float")
+     * @ORM\Column(name="lng", type="float", nullable=true)
      */
     private $lng;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="addressLine", type="string", length=255)
+     */
+    private $addressLine;
 
     /**
      * @var string
@@ -75,7 +118,7 @@ class MarketCenter
     /**
      * @var string
      *
-     * @ORM\Column(name="opEmail", type="string", length=255, nullable=true)
+     * @ORM\Column(name="opEmail", type="string", length=255, unique=true)
      */
     private $principleEmail;
 
@@ -93,7 +136,12 @@ class MarketCenter
 
     public function __construct()
     {
-        $this->applicants = new ArrayCollection();
+        $this->applicants   = new ArrayCollection();
+
+        //need to remove this
+        $this->uid          = rand(1,9999999);
+        $this->lat          = 0;
+        $this->lng          = 0;
     }
 
     /**
@@ -196,6 +244,102 @@ class MarketCenter
     public function getLng()
     {
         return $this->lng;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param int $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return int
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+
+    /**
+     * @param int $zip
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param string $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddressLine()
+    {
+        return $this->addressLine;
+    }
+
+    /**
+     * @param string $addressLine
+     */
+    public function setAddressLine($addressLine)
+    {
+        $this->addressLine = $addressLine;
     }
 
     /**

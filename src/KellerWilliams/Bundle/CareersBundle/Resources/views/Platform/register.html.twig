@@ -1,7 +1,5 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
-
     <br>
     <section id="content-wrapper">
 
@@ -13,6 +11,60 @@
                 <!-- .entry-note start -->
                 <section class="entry-note">
                     <h1>Register <span class="text-color">Your Market Center!</span></h1>
+                    <h2>Step 1 of 2</h2>
+
+                    <form action="{{ path('_kw_mc_register') }}" method="post" {{ form_enctype(form) }} class="Apply">
+                        {{ form_errors(form.name) }}
+                        {{ form_errors(form.description) }}
+                        {{ form_errors(form.principleFirstName) }}
+                        {{ form_errors(form.principleLastName) }}
+                        {{ form_errors(form.principleEmail) }}
+                        {{ form_errors(form) }}
+
+                        <uL>
+                            <li>
+                                {{ form_label(form.name, '*Market Center Name:') }}
+                                {{ form_widget(form.name) }}
+                            </li>
+
+                            <li>
+                            {{ form_label(form.address, '*Market Center Address:') }}
+                            {{ form_widget(form.address) }}
+                            </li>
+
+                            <li>
+                            {{ form_label(form.zip, '*Market Center Zip:') }}
+                            {{ form_widget(form.zip) }}
+                            </li>
+
+                            <li>
+                            {{ form_label(form.description, '*Market Center Description:') }}
+                            {{ form_widget(form.description) }}
+                            </li>
+
+                            <li>
+                            {{ form_label(form.principleFirstName, '*Your First Name:') }}
+                            {{ form_widget(form.principleFirstName) }}
+                            </li>
+
+                            <li>
+                            {{ form_label(form.principleLastName, '*Your Last Name:') }}
+                            {{ form_widget(form.principleLastName) }}
+                            </li>
+
+                            <li>
+                            {{ form_label(form.principleEmail, '*Your E-Mail:') }}
+                            {{ form_widget(form.principleEmail) }}
+                            </li>
+
+                            <li>
+                            {{ form_rest(form) }}
+                            </li>
+
+                            <input type="submit" value="Sign Up!"/>
+
+                        </uL>
+                    </form>
 
                 </section><!-- entry-note end -->
             </article><!-- .grid_12 end -->

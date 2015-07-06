@@ -27,7 +27,7 @@ class DefaultController extends Controller
         /** @var MarketCenter $em */
         $marketCenter = $this->getDoctrine()
             ->getRepository('KellerWilliamsCareersBundle:MarketCenter')
-            ->findOneBy(array('uid' => 123));
+            ->findOneBy(array('uid' => 7341608));
 
         return array('marketCenter' => $marketCenter);
     }

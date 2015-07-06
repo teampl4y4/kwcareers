@@ -58,7 +58,7 @@
                     {% if mc is defined %}
                         <li>
                             <span class="nav-icon icon-calendar"></span>
-                            <a href="#">MC Events</a>
+                            <a href="{{ path('_kw_mc_events', { uid: mc.uid }) }}">MC Events</a>
                         </li>
                     {% else %}
                         <li>
@@ -70,7 +70,7 @@
                     {% if mc is defined %}
                         <li>
                             <span class="nav-icon icon-user"></span>
-                            <a href="{{ path('_kw_mc_contact', {uid: mc.uid}) }}">Contact Us</a>
+                            <a href="{{ path('_kw_mc_contact', { uid: mc.uid }) }}">Contact Us</a>
                         </li>
                     {% endif %}
 

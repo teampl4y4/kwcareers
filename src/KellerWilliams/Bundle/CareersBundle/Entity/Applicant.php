@@ -123,7 +123,7 @@ class Applicant
 
     /**
      * @var MarketCenter
-     * @ManyToOne(targetEntity="MarketCenter", inversedBy="applicants", cascade={"all"})
+     * @ManyToOne(targetEntity="MarketCenter", inversedBy="applicants")
      */
     private $marketCenter;
 
