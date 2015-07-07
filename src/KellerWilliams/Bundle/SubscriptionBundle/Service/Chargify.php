@@ -121,21 +121,26 @@ class Chargify
         $params = array(
             'subscription' => [
                 'product_handle'    => (string) $subscription->getChargifyProductId(),
-                'customer_id'       => (string) $subscription->getChargifyCustomerId(),
+                'customer_id'       => $subscription->getChargifyCustomerId(),
                 'credit_card_attributes' => [
                             'full_number'        => (string) $subscription->getCreditcardNumber(),
                             'expiration_month'   => (string) $subscription->getExpirationMonth(),
                             'expiration_year'    => (string) $subscription->getExpirationYear()
         ]]);
 
-        $response = $this->client->post($uri, [
-            'content-type' => 'application/json',
-            'json'    => $params,
-            'auth'   => [ $this->apiKey, 'x' ]
-        ]);
+        $response = null;
 
-
-        $body = json_decode($response->getBody());
+        try {
+            $response = $this->client->post($uri, [
+                'content-type' => 'application/json',
+                'json' => $params,
+                'auth' => [$this->apiKey, 'x']
+            ]);
+        } catch (Exception $e)
+        {
+            var_dump($e->getMessage());
+            var_dump($response->getBody());
+        }
 
         if($response->getStatusCode() != 201) {
             throw new Exception('Something went wrong creating a subscription');
