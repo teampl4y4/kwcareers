@@ -6,6 +6,7 @@
     <meta name="author" content="Keller Williams Realty">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
 
+        {% block stylesheets %}{% endblock %}
         {{ include ('layout/header.html.twig') }}
         {% block body %}{% endblock %}
         {{ include ('layout/footer.html.twig') }}
