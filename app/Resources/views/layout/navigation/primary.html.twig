@@ -5,16 +5,19 @@
     <section class="container_12">
         <section class="grid_12">
             <!-- #nav start -->
+
+            {#<p>You are in the {{ get_action_name() }} action of the {{ get_controller_name() }} controller.</p>#}
+
             <nav id="nav">
                 <ul style="play: none">
 
                     {% if mc is defined %}
-                        <li class="current-menu-item">
+                        <li class="">
                             <span class="nav-icon icon-desktop"></span>
                             <a href="{{ path('_kw_mc', {uid: mc.uid}) }}">{{ mc.name }}</a>
                         </li>
                     {% else %}
-                        <li class="current-menu-item">
+                        <li {% if get_action_name() == 'index' and get_controller_name() == 'default' %}class="current-menu-item"{% endif %}>
                             <span class="nav-icon icon-desktop"></span>
                             <a href="{{ path('_home') }}">Home</a>
                         </li>
@@ -32,7 +35,7 @@
                             </ul>
                         </li>
                     {% else %}
-                        <li>
+                        <li {% if get_action_name() == 'news' and get_controller_name() == 'default' %}class="current-menu-item"{% endif %}>
                             <span class="nav-icon icon-tags"></span>
                             <a href="{{ path('_kw_news') }}">News</a>
                             <ul style="visibility: hidden; display: block;">
@@ -75,7 +78,7 @@
                     {% endif %}
 
                     {% if mc is not defined %}
-                    <li>
+                    <li {% if get_action_name() == 'findOffice' and get_controller_name() == 'default' %}class="current-menu-item"{% endif %}>
                         <span class="nav-icon icon-map-marker"></span>
                         <a href="{{ path('_kw_find_office') }}">Find an Office</a>
                     </li>

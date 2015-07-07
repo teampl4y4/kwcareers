@@ -22,6 +22,13 @@
             <argument>%chargify_return_format%</argument>
         </service>
 
+        <service id="kw.twig.extension" class="KellerWilliams\Bundle\CareersBundle\Twig\Extension\ControllerActionExtension">
+            <tag name="twig.extension" />
+            <call method="setRequest">
+                <argument type="service" id="request_stack" />
+            </call>
+        </service>
+
     </services>
 
 </container>
