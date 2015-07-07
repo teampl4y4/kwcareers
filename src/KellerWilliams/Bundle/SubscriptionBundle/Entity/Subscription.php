@@ -22,6 +22,7 @@ class Subscription
     private $id;
 
     /**
+     * This is actually the product-handle in Chargify
      * @var integer
      *
      * @ORM\Column(name="chargify_product_id", type="integer")
@@ -110,7 +111,7 @@ class Subscription
     }
 
     /**
-     * Set chargifyProductId
+     * Set chargifyProductId (maps to product handle in Chargify)
      *
      * @param integer $chargifyProductId
      * @return Subscription
@@ -123,7 +124,7 @@ class Subscription
     }
 
     /**
-     * Get chargifyProductId
+     * Get chargifyProductId (maps to product handle in Chargify)
      *
      * @return integer 
      */
