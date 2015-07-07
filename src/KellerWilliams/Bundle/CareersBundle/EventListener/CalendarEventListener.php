@@ -30,7 +30,7 @@ class CalendarEventListener
         // Use the filter in your query for example
 
         $request = $calendarEvent->getRequest();
-        $filter = $request->get('filter');
+//        $filter = $request->get('filter');
 
         $event = new EventEntity('Title Event', new \DateTime('+1 day'), new \DateTime('+3 day'), true);
         $calendarEvent->addEvent($event);
