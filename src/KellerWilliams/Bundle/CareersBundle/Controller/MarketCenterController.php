@@ -14,10 +14,15 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use GuzzleHttp;
 
+/**
+ * Class MarketCenterController
+ * @package KellerWilliams\Bundle\CareersBundle\Controller
+ * @Route("/careers/office")
+ */
 class MarketCenterController extends Controller
 {
     /**
-     * @Route("/market-center/{uid}", name="_kw_mc")
+     * @Route("/{uid}", name="_kw_mc")
      * @Template()
      */
     public function viewAction($uid)
@@ -29,7 +34,7 @@ class MarketCenterController extends Controller
 
     /**
      * @param $uid
-     * @Route("/market-center/{uid}/contact", name="_kw_mc_contact")
+     * @Route("/{uid}/contact", name="_kw_mc_contact")
      * @Template()
      */
     public function contactAction($uid)
@@ -40,7 +45,7 @@ class MarketCenterController extends Controller
 
     /**
      * @param $uid
-     * @Route("/market-center/{uid}/events", name="_kw_mc_events")
+     * @Route("/{uid}/events", name="_kw_mc_events")
      * @Template()
      */
     public function eventsAction($uid)
@@ -50,7 +55,7 @@ class MarketCenterController extends Controller
     }
 
     /**
-     * @Route("/market-center/{uid}/apply", name="_kw_mc_apply")
+     * @Route("/{uid}/apply", name="_kw_mc_apply")
      * @Template()
      */
     public function applyAction($uid)
@@ -87,7 +92,7 @@ class MarketCenterController extends Controller
     }
 
     /**
-     * @Route("/market-center/{uid}/apply/thanks", name="_kw_mc_apply_thanks")
+     * @Route("/{uid}/apply/thanks", name="_kw_mc_apply_thanks")
      * @Template()
      */
     public function applyThanksAction($uid)

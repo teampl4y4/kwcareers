@@ -35,4 +35,14 @@ class User extends BaseUser
         $this->emailCanonical       = $emailCanonical;
         $this->usernameCanonical    = $emailCanonical;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

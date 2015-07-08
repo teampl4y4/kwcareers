@@ -6,12 +6,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * MarketCenter
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MarketCenterRepository")
  */
 class MarketCenter
 {
@@ -25,9 +26,9 @@ class MarketCenter
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="uid", type="integer")
+     * @ORM\Column(name="uid", type="string", length=255, unique=true)
      */
     private $uid;
 
@@ -123,11 +124,18 @@ class MarketCenter
     private $principleEmail;
 
     /**
-     * @var chargifyId
+     * @var integer
      *
      * @ORM\Column(name="chargifyId", type="integer", length=255, nullable=true)
      */
     private $chargifyId;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isActive", type="boolean")
+     */
+    private $isActive;
 
     /**
      * @OneToMany(targetEntity="Applicant", mappedBy="marketCenter", cascade={"persist"}, orphanRemoval=true)
@@ -137,11 +145,7 @@ class MarketCenter
     public function __construct()
     {
         $this->applicants   = new ArrayCollection();
-
-        //need to remove this
-        $this->uid          = rand(1,9999999);
-        $this->lat          = 0;
-        $this->lng          = 0;
+        $this->isActive     = true;
     }
 
     /**
@@ -430,6 +434,22 @@ class MarketCenter
     }
 
     /**
+     * @return mixed
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
+
+    /**
      * Set applicants for a MarketCenter
      * @param ArrayCollection $applicants
      */
@@ -447,8 +467,40 @@ class MarketCenter
         return $this->applicants;
     }
 
+    public function getSeoUri()
+    {
+        if($this->city != null) {
+            return strtolower( $this->state . '-' . $this->city . '-' . $this->getChargifyId() );
+        }
+
+        throw new Exception('Can not SEO without City/State');
+    }
+
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Add applicants
+     *
+     * @param \KellerWilliams\Bundle\CareersBundle\Entity\Applicant $applicants
+     * @return MarketCenter
+     */
+    public function addApplicant(\KellerWilliams\Bundle\CareersBundle\Entity\Applicant $applicants)
+    {
+        $this->applicants[] = $applicants;
+
+        return $this;
+    }
+
+    /**
+     * Remove applicants
+     *
+     * @param \KellerWilliams\Bundle\CareersBundle\Entity\Applicant $applicants
+     */
+    public function removeApplicant(\KellerWilliams\Bundle\CareersBundle\Entity\Applicant $applicants)
+    {
+        $this->applicants->removeElement($applicants);
     }
 }

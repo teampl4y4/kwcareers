@@ -258,4 +258,14 @@ class News
     {
         return $this->isGlobal;
     }
+
+    /**
+     * Get isGlobal
+     *
+     * @return boolean 
+     */
+    public function getIsGlobal()
+    {
+        return $this->isGlobal;
+    }
 }

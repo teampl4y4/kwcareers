@@ -1,4 +1,23 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets %}
+    <style type="text/css">
+        .mapLoader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .mapLoader img {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+{% endblock %}
 {% block body %}
 
 
@@ -6,10 +25,12 @@
         <div class="container_12">
 
             <article class="grid_12">
-                <div id="kw_mc_map" style="width:100%; height: 400px">Loading Map...</div>
-                {% if marketCenter is not null %}
-                    <h1>{{ marketCenter.name }}</h1>
-                {% endif %}
+                <div style="position: relative;">
+                    <div class="mapLoader">
+                        <img src="{{ asset('bundles/kellerwilliamscareers/img/loading.gif') }}" />
+                    </div>
+                    <div id="kw_mc_map" style="width:100%; height: 400px"></div>
+                </div>
             </article>
 
         </div>
@@ -87,29 +108,48 @@
                 };
 
                 var map = new GMaps(mapOptions);
+                var bounds = [];
 
-                {% if marketCenter is null %}
+                $('.mapLoader').show();
+
+                function drawMarketCenters(marketCenters) {
+                    $.each(marketCenters, function(i, marketCenter) {
+                        map.addMarker({
+                            lat: marketCenter.lat,
+                            lng: marketCenter.lng,
+                            title: marketCenter.name,
+                            url: '/careers/office/' + marketCenter.uid,
+                            click: function(e)
+                                { window.location.href = e.url;}
+                        });
+
+                        bounds.push(new google.maps.LatLng(marketCenter.lat, marketCenter.lng));
+                        $('.mapLoader').hide();
+                    });
+
+                    map.fitLatLngBounds(bounds);
+                }
+
+                //if we have already done this lookup, then just show from session
+                {% if marketCenters is iterable %}
+                    drawMarketCenters({{ marketCenters }})
+                {% else %}
+                //session data doesn't exists so we need to do this..
                     GMaps.geolocate({
                         success: function(position) {
-                            map.setCenter(position.coords.latitude, position.coords.longitude);
-                            map.setZoom(15);
+                            $.ajax({
+                                type: 'GET',
+                                url: '{{ path('_kw_api_gps') }}',
+                                data: { lat: position.coords.latitude, lng: position.coords.longitude }
+                            }).done(function(marketCenters) {
+                                drawMarketCenters(marketCenters);
+                            }).error(function(response) {
+                                $('mapLoader').hide();
+                            });
                         }
                     });
-                {% else %}
-                    map.addMarker({
-                        lat: {{ marketCenter.lat }},
-                        lng: {{ marketCenter.lng }},
-                        title: '{{ marketCenter.name }}',
-                        url: 'market-center/{{ marketCenter.uid }}',
-                        click: function(e)
-                        {
-                            window.location.href = e.url;
-                        }
-                    });
-                    map.setCenter({{ marketCenter.lat }}, {{ marketCenter.lng }});
-                    map.setZoom(11);
-
                 {% endif %}
+
 
             });
 

@@ -43,6 +43,10 @@ class PlatformController extends Controller
 
         if ($form->isValid()) {
 
+            /** @var EntityManager $em */
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($marketCenter);
+
             //$url = '?key=&address=3008+cole+castle+lewisville+tx';
             $data = array(
                 'key' => 'AIzaSyCtXKyFUqbWptlG7iFlRXcG8X8pWxRSqWg',
@@ -79,13 +83,12 @@ class PlatformController extends Controller
             $marketCenter->setLat($address->geometry->location->lat);
             $marketCenter->setLng($address->geometry->location->lng);
 
-            /** @var EntityManager $em */
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($marketCenter);
-
             /** @var Chargify $chargify */
-            $chargify = $this->get('kw.chargify');
-            $marketCenter = $chargify->addCustomerFromMarketCenter($marketCenter);
+            $chargify       = $this->get('kw.chargify');
+            $marketCenter   = $chargify->addCustomerFromMarketCenter($marketCenter);
+
+            //create SEO friendly URI
+            $marketCenter->setUid( $marketCenter->getSeoUri() );
 
             $em->persist($marketCenter);
             $em->flush();
