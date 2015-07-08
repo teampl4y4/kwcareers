@@ -32,8 +32,14 @@ class DefaultController extends Controller
     {
         //grab this from session if we can..
         $marketCenters = $this->get('session')->get(self::CENTERS_NEAR_ME);
+
+        $forceLookup = true;
+        if(is_array($marketCenters) && count($marketCenters) > 0) {
+            $forceLookup = false;
+        }
         return array(
             'marketCenters'    => json_encode($marketCenters),
+            'forceLookup'      => $forceLookup,
             'mcUriPlaceHolder' => self::MC_URL_URI_PLACEHOLDER,
             'mcUrl'            => $this->generateUrl('_kw_mc', array('uid' => self::MC_URL_URI_PLACEHOLDER))
         );

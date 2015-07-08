@@ -131,8 +131,9 @@
                 }
 
                 //if we have already done this lookup, then just show from session
-                {% if marketCenters is iterable %}
-                    drawMarketCenters({{ marketCenters }})
+                {% if forceLookup == false %}
+                    var marketCenters = jQuery.parseJSON( '{{ marketCenters|raw }}' );
+                    drawMarketCenters(marketCenters);
                 {% else %}
                 //session data doesn't exists so we need to do this..
                     GMaps.geolocate({
