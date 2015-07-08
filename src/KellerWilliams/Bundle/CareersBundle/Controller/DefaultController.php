@@ -12,7 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    const CENTERS_NEAR_ME = '_kw_mcs_nearMe';
+    const CENTERS_NEAR_ME           = '_kw_mcs_nearMe';
+    const MC_URL_URI_PLACEHOLDER    = 'ZZZ';
 
     /**
      * @Route("/", name="_home")
@@ -31,7 +32,11 @@ class DefaultController extends Controller
     {
         //grab this from session if we can..
         $marketCenters = $this->get('session')->get(self::CENTERS_NEAR_ME);
-        return array('marketCenters' => json_encode($marketCenters));
+        return array(
+            'marketCenters'    => json_encode($marketCenters),
+            'mcUriPlaceHolder' => self::MC_URL_URI_PLACEHOLDER,
+            'mcUrl'            => $this->generateUrl('_kw_mc', array('uid' => self::MC_URL_URI_PLACEHOLDER))
+        );
     }
 
     /**
