@@ -54,10 +54,25 @@ class PlatformController extends Controller
 
             $address    = json_decode($response->getBody())->results[0];
 
-            $marketCenter->setAddress( $address->address_components[0]->long_name . ' ' . $address->address_components[1]->long_name);
-            $marketCenter->setCity($address->address_components[2]->long_name);
-            $marketCenter->setState($address->address_components[4]->long_name);
-            $marketCenter->setCountry($address->address_components[5]->long_name);
+            foreach($address->address_components as $component) {
+                switch($component->types[0]) {
+
+                    //set city
+                    case 'locality':
+                        $marketCenter->setCity($component->long_name);
+                        break;
+
+                    //set state
+                    case 'administrative_area_level_1':
+                        $marketCenter->setState($component->long_name);
+                        break;
+
+                    //set country
+                    case 'country':
+                        $marketCenter->setCountry($component->long_name);
+                        break;
+                }
+            }
 
             $marketCenter->setAddressLine($address->formatted_address);
 

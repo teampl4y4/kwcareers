@@ -12,7 +12,7 @@
                 <ul style="play: none">
 
                     {% if mc is defined %}
-                        <li class="">
+                        <li {% if get_action_name() == 'view' and get_controller_name() == 'marketcenter' %}class="current-menu-item"{% endif %}>
                             <span class="nav-icon icon-desktop"></span>
                             <a href="{{ path('_kw_mc', {uid: mc.uid}) }}">{{ mc.name }}</a>
                         </li>
@@ -59,7 +59,7 @@
                     </li>
 
                     {% if mc is defined %}
-                        <li>
+                        <li {% if get_action_name() == 'events' and get_controller_name() == 'marketcenter' %}class="current-menu-item"{% endif %}>
                             <span class="nav-icon icon-calendar"></span>
                             <a href="{{ path('_kw_mc_events', { uid: mc.uid }) }}">MC Events</a>
                         </li>
@@ -71,7 +71,7 @@
                     {% endif %}
 
                     {% if mc is defined %}
-                        <li>
+                        <li {% if get_action_name() == 'contact' and get_controller_name() == 'marketcenter' %}class="current-menu-item"{% endif %}>
                             <span class="nav-icon icon-user"></span>
                             <a href="{{ path('_kw_mc_contact', { uid: mc.uid }) }}">Contact Us</a>
                         </li>
@@ -85,7 +85,7 @@
                     {% endif %}
 
                     {% if mc is defined %}
-                        <li>
+                        <li {% if get_action_name() == 'apply' and get_controller_name() == 'marketcenter' %}class="current-menu-item"{% endif %}>
                             <span class="nav-icon icon-double-angle-right"></span>
                             <a href="{{ path('_kw_mc_apply', {uid: mc.uid}) }}"><b>Apply Today</b></a>
                         </li>
