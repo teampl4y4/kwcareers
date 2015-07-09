@@ -20,8 +20,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new ADesigns\CalendarBundle\ADesignsCalendarBundle()
-,
+            new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new KellerWilliams\Bundle\SubscriptionBundle\KellerWilliamsSubscriptionBundle(),
         );
 

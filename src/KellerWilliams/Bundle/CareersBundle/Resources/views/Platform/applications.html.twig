@@ -1,0 +1,88 @@
+{% extends '::platform/layout.html.twig' %}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/kellerwilliamscareers/assets/plugins/jquery-datatable/media/css/jquery.dataTables.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/kellerwilliamscareers/assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/kellerwilliamscareers/assets/plugins/datatables-responsive/css/datatables.responsive.css') }}" rel="stylesheet" type="text/css" media="screen" />
+{% endblock %}
+{% block body %}
+
+    <!-- START CONTAINER FLUID -->
+    <div class="container-fluid container-fixed-lg bg-white">
+        <!-- START PANEL -->
+        <div class="panel panel-transparent">
+            {% if applicants|length > 0 %}
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Your Applicants
+                    </div>
+                    <div class="pull-right">
+                        <div class="col-xs-12">
+                            <input type="text" id="search-table" class="form-control pull-right" placeholder="Search Applicants">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover demo-table-search stripe" id="tableWithSearch">
+                        <thead>
+                        <tr>
+                            <th width="5%">Id</th>
+                            <th width="16%">Name</th>
+                            <th width="7%">Score</th>
+                            <th width="15%">E-Mail</th>
+                            <th width="15%">Phone</th>
+                            <th width="20%">Status</th>
+                            <th width="15%" class="text-master">Applied</th>
+                            <th width="7%">&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for applicant in applicants %}
+                                <tr>
+                                    <td width="5%" class="v-align-middle">
+                                        <p>{{ applicant.id }}</p>
+                                    </td>
+                                    <td width="16%" class="v-align-middle semi-bold">
+                                        <p>{{ applicant.name }}</p>
+                                    </td>
+                                    <td width="7%" class="v-align-middle">
+                                        <p>Score Here</p>
+                                    </td>
+                                    <td width="15%" class="v-align-middle">
+                                        <p>{{ applicant.email }}</p>
+                                    </td>
+                                    <td width="15%" class="v-align-middle">
+                                        <p>{{ applicant.phoneNumber }}</p>
+                                    </td>
+                                    <td width="20%" class="v-align-middle">
+                                        <p><em>Not Started, Invited</em></p>
+                                    </td>
+                                    <td width="15%" class="v-align-middle">
+                                        <p>{{ applicant.createdAt|ago }}</p>
+                                    </td>
+                                    <td width="7%"class="applicant_toolbar">
+                                        
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <h2>No Leads Yet.</h2>
+            {% endif %}
+        </div>
+        <!-- END PANEL -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/kellerwilliamscareers/assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/kellerwilliamscareers/assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/kellerwilliamscareers/assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kellerwilliamscareers/assets/plugins/datatables-responsive/js/datatables.responsive.js') }}"></script>
+    <script src="{{ asset('bundles/kellerwilliamscareers/assets/js/datatables.js') }}" type="text/javascript"></script>
+{% endblock %}

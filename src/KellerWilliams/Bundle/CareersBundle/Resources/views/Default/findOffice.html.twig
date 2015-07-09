@@ -114,9 +114,6 @@
 
                 function drawMarketCenters(marketCenters) {
 
-                    //TODO if there is only one marketCenter we should do something special
-                    //TODO we need to set max zoom, because if only one it zooms too much.
-
                     $.each(marketCenters, function (i, marketCenter) {
                         map.addMarker({
                             lat: marketCenter.lat,
@@ -131,7 +128,15 @@
                         bounds.push(new google.maps.LatLng(marketCenter.lat, marketCenter.lng));
                     });
 
-                    map.fitLatLngBounds(bounds);
+                    if(marketCenters.length == 1) {
+                        //one location found
+                        map.setCenter(marketCenters[0].lat, marketCenters[0].lng);
+                        map.setZoom(13);
+                    } else {
+                        //multiple locations found
+                        map.fitLatLngBounds(bounds);
+                    }
+
                     $('.mapLoader').hide();
 
                 }

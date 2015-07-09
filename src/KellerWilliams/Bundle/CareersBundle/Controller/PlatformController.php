@@ -16,18 +16,39 @@ use KellerWilliams\Bundle\CareersBundle\Form;
 use GuzzleHttp;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class PlatformController
+ * @package KellerWilliams\Bundle\CareersBundle\Controller
+ * @Route("/dashboard")
+ */
 class PlatformController extends Controller
 {
 
     const SESSION_MC_ID = 'mc.id';
 
     /**
-     * @Route("/dashboard")
+     * @Route("/")
      * @Template()
      */
     public function indexAction()
     {
         return array();
+    }
+
+    /**
+     * @Route("/applications")
+     * @Template()
+     */
+    public function applicationsAction()
+    {
+        $em             = $this->getDoctrine()->getEntityManager();
+
+        /** @var Entity\MarketCenter $marketCenter */
+        $marketCenter   = $em->getRepository('KellerWilliamsCareersBundle:MarketCenter')
+                             ->findOneBy(array('user' => $this->getUser()->getId()));
+
+        $applicants = $marketCenter->getApplicants();
+        return array('applicants' => $applicants);
     }
 
     /**

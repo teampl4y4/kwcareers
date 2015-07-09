@@ -472,8 +472,13 @@ class Applicant
         $this->step++;
     }
 
-    public function __toString()
+    public function getName()
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
