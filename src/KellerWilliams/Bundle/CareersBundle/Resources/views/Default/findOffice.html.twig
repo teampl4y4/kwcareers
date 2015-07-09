@@ -114,6 +114,9 @@
 
                 function drawMarketCenters(marketCenters) {
 
+                    //TODO if there is only one marketCenter we should do something special
+                    //TODO we need to set max zoom, because if only one it zooms too much.
+
                     $.each(marketCenters, function (i, marketCenter) {
                         map.addMarker({
                             lat: marketCenter.lat,
@@ -129,6 +132,7 @@
                     });
 
                     map.fitLatLngBounds(bounds);
+                    $('.mapLoader').hide();
 
                 }
 
@@ -152,11 +156,13 @@
                                 if(marketCenters.length > 0) {
                                     drawMarketCenters(marketCenters);
                                 } else {
+
                                     //TODO -- currently if no Market Centers are found, the map doesn't work
                                     //What do we do when this happens!?
+
+                                    $('.mapLoader').hide();
                                 }
 
-                                $('.mapLoader').hide();
 
                             }).error(function(response) {
 

@@ -5,13 +5,13 @@
 
         <!-- .container_12 start -->
         <div class="container_12">
-            <!-- .grid_12 start -->
-            <article class="grid_12">
 
-                <!-- .entry-note start -->
-                <section class="entry-note">
-                    <h1>Register <span class="text-color">Your Market Center!</span></h1>
-                    <h2>Step 2 of 2</h2>
+            <section class="entry-note">
+                <h1>Register <span class="text-color">Your Market Center!</span></h1>
+                <p>Step <b>2</b> of 2</p>
+            </section>
+
+            <article class="grid_6">
 
                     <form action="{{ path('_kw_mc_payment') }}" method="post" {{ form_enctype(form) }} class="Apply">
 
@@ -20,34 +20,37 @@
                         {{ form_errors(form.expirationYear) }}
                         {{ form_errors(form) }}
 
-                        <uL>
 
-                            <li>
-                                {{ form_label(form.creditcardNumber, '*Credit Card Number:') }}
-                                {{ form_widget(form.creditcardNumber) }}
-                            </li>
+                        <fieldset>
+                            {{ form_label(form.creditcardNumber, '*Credit Card Number:') }}
+                            {{ form_widget(form.creditcardNumber, { 'attr': {'class': 'wpcf7-text'}}) }}
+                        </fieldset>
 
-                            <li>
-                                {{ form_label(form.expirationMonth, '*Exp Month:') }}
-                                {{ form_widget(form.expirationMonth) }}
-                            </li>
+                        <fieldset>
+                            {{ form_label(form.expirationMonth, '*Exp Month:') }}
+                            {{ form_widget(form.expirationMonth, { 'attr': {'class': 'wpcf7-text'}}) }}
+                        </fieldset>
 
-                            <li>
-                                {{ form_label(form.expirationYear, '*Exp Year:') }}
-                                {{ form_widget(form.expirationYear) }}
-                            </li>
+                        <fieldset>
+                            {{ form_label(form.expirationYear, '*Exp Year:') }}
+                            {{ form_widget(form.expirationYear, { 'attr': {'class': 'wpcf7-text'}}) }}
+                        </fieldset>
 
-                            <li>
+                        <fieldset>
                             {{ form_rest(form) }}
-                            </li>
+                        </fieldset>
 
-                            <input type="submit" value="Sign Up!"/>
-
-                        </uL>
+                        <fieldset>
+                            <input type="submit" value="Sign Up!" class="wpcf7-submit"/>
+                        </fieldset>
                     </form>
 
-                </section><!-- entry-note end -->
-            </article><!-- .grid_12 end -->
+            </article>
+
+            <article class="grid_6">
+                <p>reason to join here</p>
+            </article>
+
 
         </div>
 

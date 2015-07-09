@@ -18,7 +18,6 @@ class MarketCenterRepository extends EntityRepository
     {
 
         $em     = $this->getEntityManager();
-        $rsm    = new ResultSetMapping();
 
         $sql    = "
             SELECT

@@ -3,6 +3,7 @@
 namespace KellerWilliams\Bundle\CareersBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
+use FOS\UserBundle\Doctrine\UserManager;
 use KellerWilliams\Bundle\SubscriptionBundle\Entity\Subscription;
 use KellerWilliams\Bundle\SubscriptionBundle\Form\AddSubscription;
 use KellerWilliams\Bundle\SubscriptionBundle\Service\Chargify;
@@ -22,10 +23,11 @@ class PlatformController extends Controller
 
     /**
      * @Route("/dashboard")
+     * @Template()
      */
     public function indexAction()
     {
-        return new Response('Admin page!');
+        return array();
     }
 
     /**
@@ -82,6 +84,7 @@ class PlatformController extends Controller
 
             $marketCenter->setLat($address->geometry->location->lat);
             $marketCenter->setLng($address->geometry->location->lng);
+            $marketCenter->setIsActive(false);
 
             /** @var Chargify $chargify */
             $chargify       = $this->get('kw.chargify');
@@ -89,6 +92,20 @@ class PlatformController extends Controller
 
             //create SEO friendly URI
             $marketCenter->setUid( $marketCenter->getSeoUri() );
+
+            /** @var UserManager $userManager */
+            $userManager = $this->get('fos_user.user_manager');
+
+            /** @var Entity\User $user */
+            $user        = $userManager->createUser();
+            $user->setEmail($marketCenter->getPrincipleEmail());
+            $user->setUsername($marketCenter->getPrincipleEmail());
+            $user->setPlainPassword('password');
+            $user->setEnabled(true);
+            $userManager->updateUser($user);
+
+            //associate MC with the User
+            $marketCenter->setUser($user);
 
             $em->persist($marketCenter);
             $em->flush();
@@ -134,6 +151,10 @@ class PlatformController extends Controller
             //Mask CC number in DB except for last 4 digits
             $subscription->setCreditcardNumber($this->maskCreditCard($subscription->getCreditcardNumber()));
 
+            //we got payment, so lets set it to active
+            $marketCenter->setIsActive(true);
+
+            $em->persist($marketCenter);
             $em->persist($subscription);
             $em->flush();
 

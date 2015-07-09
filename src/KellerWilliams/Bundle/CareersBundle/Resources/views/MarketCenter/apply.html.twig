@@ -7,42 +7,49 @@
 
     <!-- .container_12 start -->
     <div class="container_12">
-        <!-- .grid_12 start -->
-        <article class="grid_12">
 
-            <!-- .entry-note start -->
             <section class="entry-note">
                 <h1>Apply to <span class="text-color">{{ mc.name }}</span>. Lorem Ipsum Goes Here.</h1>
+            </section>
 
-                <form action="{{ path('_kw_mc_apply', {'uid': mc.uid}) }}" method="post" {{ form_enctype(form) }} class="Apply">
+            <!-- .entry-note start -->
+
+            <article class="grid_6">
+                <form action="{{ path('_kw_mc_apply', {'uid': mc.uid}) }}" method="post" {{ form_enctype(form) }} class="Apply wpcf7">
                     {{ form_errors(form.firstName) }}
                     {{ form_errors(form.lastName) }}
                     {{ form_errors(form.email) }}
                     {{ form_errors(form.phoneNumber) }}
                     {{ form_errors(form) }}
 
-                    {{ form_label(form.firstName, '*First Name:') }}
-                    {{ form_widget(form.firstName) }}
-
-                    {{ form_label(form.lastName, '*Last Name:') }}
-                    {{ form_widget(form.lastName) }}
-
-                    {{ form_label(form.email, '*E-Mail:') }}
-                    {{ form_widget(form.email) }}
-
-                    {{ form_label(form.phoneNumber, '*Phone Number:') }}
-                    {{ form_widget(form.phoneNumber) }}
+                    <fieldset>
+                        {{ form_label(form.firstName, '*First Name:') }}
+                        {{ form_widget(form.firstName, { 'attr': {'class': 'wpcf7-text'}}) }}
+                    </fieldset>
+                    <fieldset>
+                        {{ form_label(form.lastName, '*Last Name:') }}
+                        {{ form_widget(form.lastName, { 'attr': {'class': 'wpcf7-text'}}) }}
+                    </fieldset>
+                    <fieldset>
+                        {{ form_label(form.email, '*E-Mail:') }}
+                        {{ form_widget(form.email, { 'attr': {'class': 'wpcf7-text'}}) }}
+                    </fieldset>
+                    <fieldset>
+                        {{ form_label(form.phoneNumber, '*Phone Number:') }}
+                        {{ form_widget(form.phoneNumber, { 'attr': {'class': 'wpcf7-text'}}) }}
+                    </fieldset>
 
                     {#{{ form_label(form.group, '*Group:') }}#}
                     {#{{ form_widget(form.group, { 'attr': {'class': 'select_group'}, 'empty_value': '-- Add to Group --' }) }}#}
 
                     {{ form_rest(form) }}
 
-                    <input type="submit" value="Apply!"/>
+                    <input type="submit" value="Apply!" class="wpcf7-submit"/>
                 </form>
-
-            </section><!-- entry-note end -->
-        </article><!-- .grid_12 end -->
+        </article>
+        <article class="grid_6">
+            <p>Reason to apply here</p>
+        </article>
 
     </div>
 

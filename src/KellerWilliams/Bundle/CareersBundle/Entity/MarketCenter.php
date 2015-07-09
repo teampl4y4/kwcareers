@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * MarketCenter
@@ -141,6 +143,12 @@ class MarketCenter
      * @OneToMany(targetEntity="Applicant", mappedBy="marketCenter", cascade={"persist"}, orphanRemoval=true)
      */
     private $applicants;
+
+    /**
+     * @ManyToOne(targetEntity="User", inversedBy="marketCenters")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
 
     public function __construct()
     {
@@ -479,6 +487,22 @@ class MarketCenter
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
     /**

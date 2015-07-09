@@ -5,15 +5,17 @@
 
         <!-- .container_12 start -->
         <div class="container_12">
+
+            <!-- .entry-note start -->
+            <section class="entry-note">
+                <h1>Register <span class="text-color">Your Market Center!</span></h1>
+                <p>Step <b>1</b> of 2</p>
+            </section><!-- entry-note end -->
+
             <!-- .grid_12 start -->
-            <article class="grid_12">
+            <article class="grid_6">
 
-                <!-- .entry-note start -->
-                <section class="entry-note">
-                    <h1>Register <span class="text-color">Your Market Center!</span></h1>
-                    <h2>Step 1 of 2</h2>
-
-                    <form action="{{ path('_kw_mc_register') }}" method="post" {{ form_enctype(form) }} class="Apply">
+                    <form action="{{ path('_kw_mc_register') }}" method="post" {{ form_enctype(form) }} class="Apply wpcf7">
                         {{ form_errors(form.name) }}
                         {{ form_errors(form.description) }}
                         {{ form_errors(form.principleFirstName) }}
@@ -21,53 +23,54 @@
                         {{ form_errors(form.principleEmail) }}
                         {{ form_errors(form) }}
 
-                        <uL>
-                            <li>
+                            <fieldset>
                                 {{ form_label(form.name, '*Market Center Name:') }}
-                                {{ form_widget(form.name) }}
-                            </li>
+                                {{ form_widget(form.name, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
-                            {{ form_label(form.address, '*Market Center Address:') }}
-                            {{ form_widget(form.address) }}
-                            </li>
+                            <fieldset>
+                                {{ form_label(form.address, '*Market Center Address:') }}
+                                {{ form_widget(form.address, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
-                            {{ form_label(form.zip, '*Market Center Zip:') }}
-                            {{ form_widget(form.zip) }}
-                            </li>
+                            <fieldset>
+                                {{ form_label(form.zip, '*Market Center Zip:') }}
+                                {{ form_widget(form.zip, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
-                            {{ form_label(form.description, '*Market Center Description:') }}
-                            {{ form_widget(form.description) }}
-                            </li>
+                            <fieldset>
+                                {{ form_label(form.description, '*Market Center Description:') }}
+                                {{ form_widget(form.description, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
-                            {{ form_label(form.principleFirstName, '*Your First Name:') }}
-                            {{ form_widget(form.principleFirstName) }}
-                            </li>
+                            <fieldset>
+                                {{ form_label(form.principleFirstName, '*Your First Name:') }}
+                                {{ form_widget(form.principleFirstName, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
-                            {{ form_label(form.principleLastName, '*Your Last Name:') }}
-                            {{ form_widget(form.principleLastName) }}
-                            </li>
+                            <fieldset>
+                                {{ form_label(form.principleLastName, '*Your Last Name:') }}
+                                {{ form_widget(form.principleLastName, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
-                            {{ form_label(form.principleEmail, '*Your E-Mail:') }}
-                            {{ form_widget(form.principleEmail) }}
-                            </li>
+                            <fieldset>
+                                {{ form_label(form.principleEmail, '*Your E-Mail:') }}
+                                {{ form_widget(form.principleEmail, { 'attr': {'class': 'wpcf7-text'}}) }}
+                            </fieldset>
 
-                            <li>
+                                                <fieldset>
                             {{ form_rest(form) }}
-                            </li>
+                                                </fieldset>
 
-                            <input type="submit" value="Sign Up!"/>
+                            <input type="submit" value="Add Payment &raquo;" class="wpcf7-submit"/>
 
-                        </uL>
                     </form>
+            </article>
 
-                </section><!-- entry-note end -->
-            </article><!-- .grid_12 end -->
+            <article class="grid_6">
+                <p>reason to join here</p>
+            </article>
+
 
         </div>
 

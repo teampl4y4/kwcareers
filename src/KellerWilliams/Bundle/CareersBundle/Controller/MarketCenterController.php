@@ -75,12 +75,6 @@ class MarketCenterController extends Controller
 
             $applicant->setMarketCenter($marketCenter);
 
-            //Let's create a berke assessment and send the invitation to the candidate
-            /** @var Berke $berke */
-            $berke     = $this->get('kw.berke');
-            $applicant = $berke->createAssessment($applicant);
-            $berke->sendAssessmentInvite($applicant);
-
             $em->persist($applicant);
             $em->flush();
 
