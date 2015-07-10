@@ -33,7 +33,7 @@
                             <th width="15%">Phone</th>
                             <th width="20%">Status</th>
                             <th width="15%" class="text-master">Applied</th>
-                            <th width="7%">&nbsp;</th>
+                            <th width="10%">&nbsp;</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,8 +61,35 @@
                                     <td width="15%" class="v-align-middle">
                                         <p>{{ applicant.createdAt|ago }}</p>
                                     </td>
-                                    <td width="7%"class="applicant_toolbar">
-                                        
+                                    <td width="10%"class="">
+                                        <div class="applicant_toolbar" style="position: relative">
+                                            <div style="position:absolute;bottom:10px;left:-210px;width:250px;">
+                                                <div class="btn-group-sm">
+                                                    <div class="btn-group">
+                                                        <a href="{{ path('_kw_plat_applicant', { id: applicant.id }) }}">
+                                                            <button type="button" class="btn btn-primary">
+                                                                <span class="p-t-5 p-b-5">
+                                                                    <i class="fa fa-user fs-15"></i>
+                                                                </span>
+                                                                <br>
+                                                                <span class="fs-10 font-montserrat text-uppercase">View</span>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a href="{{ path('_kw_plat_applicant_timeline', {id: applicant.id}) }}">
+                                                            <button type="button" class="btn btn-primary">
+                                                                <span class="p-t-5 p-b-5">
+                                                                    <i class="fa fa-history fs-15"></i>
+                                                                </span>
+                                                                <br>
+                                                                <span class="fs-10 font-montserrat text-uppercase">Timeline</span>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             {% endfor %}

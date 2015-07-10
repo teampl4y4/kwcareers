@@ -2,8 +2,10 @@
 
 namespace KellerWilliams\Bundle\CareersBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * Applicant
@@ -127,10 +129,17 @@ class Applicant
      */
     private $marketCenter;
 
+    /**
+     * @var ArrayCollection
+     * @OneToMany(targetEntity="ApplicantEvent", mappedBy="applicant")
+     */
+    private $events;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->setStep(0);
+        $this->events = new ArrayCollection();
     }
 
     /**
@@ -470,6 +479,22 @@ class Applicant
     public function advanceStep()
     {
         $this->step++;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * @param ArrayCollection $events
+     */
+    public function setEvents($events)
+    {
+        $this->events = $events;
     }
 
     public function getName()

@@ -36,7 +36,7 @@ class PlatformController extends Controller
     }
 
     /**
-     * @Route("/applications")
+     * @Route("/applications", name="_kw_plat_applicants")
      * @Template()
      */
     public function applicationsAction()
@@ -49,6 +49,32 @@ class PlatformController extends Controller
 
         $applicants = $marketCenter->getApplicants();
         return array('applicants' => $applicants);
+    }
+
+    /**
+     * @param $applicant
+     * @Route("/applications/{id}", name="_kw_plat_applicant")
+     * @Template()
+     */
+    public function viewApplicantAction($id)
+    {
+        return array();
+    }
+
+    /**
+     * @param $applicant
+     * @Route("/applications/{id}/timeline", name="_kw_plat_applicant_timeline")
+     * @Template()
+     */
+    public function applicantTimelineAction($id)
+    {
+        $em             = $this->getDoctrine()->getEntityManager();
+
+        /** @var Entity\Applicant $applicant */
+        $applicant   = $em->getRepository('KellerWilliamsCareersBundle:Applicant')
+                          ->find($id);
+
+        return array('applicant' => $applicant);
     }
 
     /**

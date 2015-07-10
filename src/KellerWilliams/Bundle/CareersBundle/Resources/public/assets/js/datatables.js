@@ -14,6 +14,7 @@
         phone: 480
     };
 
+
     // Initialize datatable showing a search box at the top right corner
     var initTableWithSearch = function() {
 
@@ -41,7 +42,28 @@
         $('#search-table').keyup(function() {
             table.fnFilter($(this).val());
         });
+
     }
+
+    $('#tableWithSearch').on( 'draw.dt', function () {
+        $('#tableWithSearch').find('.applicant_toolbar').each(function(i,item) {
+            $(item).hide();
+        });
+    } );
+
+    jQuery('#tableWithSearch tr').mouseover(function(e) {
+        var tr = $(e.currentTarget);
+        tr.find('p').addClass('text-primary bold');
+        var toolBar = tr.find('.applicant_toolbar');
+        toolBar.show();
+    });
+
+    jQuery('#tableWithSearch tr').mouseout(function(e) {
+        var tr = $(e.currentTarget);
+        tr.find('p').removeClass('text-primary bold');
+        var toolBar = tr.find('.applicant_toolbar');
+        toolBar.hide();
+    });
 
     initTableWithSearch();
 
