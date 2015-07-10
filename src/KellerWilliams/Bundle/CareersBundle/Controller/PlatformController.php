@@ -74,7 +74,9 @@ class PlatformController extends Controller
         $applicant   = $em->getRepository('KellerWilliamsCareersBundle:Applicant')
                           ->find($id);
 
-        return array('applicant' => $applicant);
+        $events      = $applicant->getEvents();
+
+        return array('applicant' => $applicant, 'events' => $events);
     }
 
     /**

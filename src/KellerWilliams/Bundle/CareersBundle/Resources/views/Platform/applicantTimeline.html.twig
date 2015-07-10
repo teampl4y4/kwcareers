@@ -10,7 +10,7 @@
       <div class="timeline-container top-circle">
          <section class="timeline">
             <div class="timeline-block">
-               <div class="timeline-point success">
+               <div class="timeline-point info">
                   <i class="pg-map"></i>
                </div>
                <!-- timeline-point -->
@@ -19,170 +19,96 @@
                      <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
                      </div>
                      <div class="card-header clearfix">
-                        <div class="user-pic">
-                           <img alt="Profile Image" width="33" height="33" data-src-retina="assets/img/profiles/8x.jpg" data-src="assets/img/profiles/8.jpg" src="assets/img/profiles/8x.jpg">
-                        </div>
-                        <h5>Jeff Curtis</h5>
-                        <h6>Shared a Tweet
-                           <span class="location semi-bold"><i class="fa fa-map-marker"></i> SF, California</span>
+                        <h5>Filled Out Form Online</h5>
+                        <h6>
+                           <span class="location semi-bold">
+                              <i class="fa fa-map-marker"></i>
+                              {{ applicant.marketCenter.name }} Landing Page</span>
                         </h6>
                      </div>
                      <div class="card-description">
-                        <p>What you think, you become. What you feel, you attract. What you imagine, you create - Buddha. <a href="#">#quote</a> </p>
-                        <div class="via">via Twitter</div>
-                     </div>
-                  </div>
-                  <div class="event-date">
-                     <h6 class="font-montserrat all-caps hint-text m-t-0">Apple Inc</h6>
-                     <small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>
-                  </div>
-               </div>
-               <!-- timeline-content -->
-            </div>
-            <!-- timeline-block -->
-            <div class="timeline-block">
-               <div class="timeline-point small">
-               </div>
-               <!-- timeline-point -->
-               <div class="timeline-content">
-                  <div class="card share full-width">
-                     <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
-                     </div>
-                     <div class="card-header clearfix">
-                        <div class="user-pic">
-                           <img alt="Profile Image" width="33" height="33" data-src-retina="assets/img/profiles/5x.jpg" data-src="assets/img/profiles/5.jpg" src="assets/img/profiles/5x.jpg">
-                        </div>
-                        <h5>Shannon Williams</h5>
-                        <h6>Shared a photo
-                           <span class="location semi-bold"><i class="fa fa-map-marker"></i> NYC, New York</span>
-                        </h6>
-                     </div>
-                     <div class="card-description">
-                        <p>Inspired by : good design is obvious, great design is transparent</p>
-                        <div class="via">via themeforest</div>
-                     </div>
-                     <div class="card-content">
-                        <ul class="buttons ">
-                           <li>
-                              <a href="#"><i class="fa fa-expand"></i>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="#"><i class="fa fa-heart-o"></i>
-                              </a>
-                           </li>
+                        <ul>
+                           <li>First Name: <b>{{ applicant.firstName }}</b></li>
+                           <li>Last Name: <b>{{ applicant.lastName }}</b></li>
+                           <li>E-Mail: <b>{{ applicant.email }}</b></li>
+                           <li>Phone: <b>{{ applicant.phoneNumber }}</b></li>
                         </ul>
-                        <img alt="Social post" src="assets/img/social-post-image.png">
-                     </div>
-                     <div class="card-footer clearfix">
-                        <div class="time">few seconds ago</div>
-                        <ul class="reactions">
-                           <li><a href="#">5,345 <i class="fa fa-comment-o"></i></a>
-                           </li>
-                           <li><a href="#">23K <i class="fa fa-heart-o"></i></a>
-                           </li>
-                        </ul>
+                        <div class="via">{{ applicant.createdAt|ago }}</div>
                      </div>
                   </div>
                   <div class="event-date">
-                     <small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>
+                     <h6 class="font-montserrat all-caps hint-text m-t-0">{{ applicant.firstName }}'s Journey Started</h6>
+                     <small class="fs-12 hint-text">{{ applicant.createdAt|ago }}</small>
                   </div>
                </div>
                <!-- timeline-content -->
             </div>
-            <!-- timeline-block -->
-            <div class="timeline-block">
-               <div class="timeline-point warning">
-                  <i class="pg-social"></i>
-               </div>
-               <!-- timeline-point -->
-               <div class="timeline-content">
-                  <div class="card share full-width ">
-                     <div class="card-header clearfix">
-                        <h5 class="text-warning-dark pull-left fs-12">Stock Market <i class="fa fa-circle text-warning-dark fs-11"></i></h5>
-                        <div class="pull-right small hint-text">
-                           5,345 <i class="fa fa-comment-o"></i>
+
+            {# let's build the timeline based on ApplicantEvents #}
+            {% if events is iterable %}
+               {% for event in events %}
+
+                  {% if event.changeInScore > 0.1 %}
+                     {% set styleClass = 'success' %}
+                  {% elseif event.changeInScore < 0 %}
+                     {% set styleClass = 'warning' %}
+                  {% else %}
+                     {% set styleClass = 'default' %}
+                  {% endif %}
+
+                  <div class="timeline-block">
+                     <div class="timeline-point {{ styleClass }}">
+                        <i class="pg-social"></i>
+                     </div>
+                     <!-- timeline-point -->
+                     <div class="timeline-content">
+                        <div class="card share full-width ">
+                           <div class="card-header clearfix">
+                              <h5 class="text-{{ styleClass }}-dark pull-left fs-12">
+                                 {{ event.title }}
+                                 <i class="fa fa-circle text-{{ styleClass }}-dark fs-11"></i>
+                              </h5>
+                              <div class="clearfix"></div>
+                           </div>
+                           <div class="card-description">
+                              <h5 class='hint-text no-margin'>{{ event.description }}</h5>
+                              <h3><span class="text-info">Change to Score</span>:
+                                 {% if event.changeInScore > 0 %}
+                                    <span class="text-success">
+                                       <i class="fa fa-sort-up small text-success"></i>
+                                       {{ (event.changeInScore*100)|number_format }}%
+                                    </span>
+                                 {% elseif event.changeInScore < 0 %}
+                                    <span class="text-danger">
+                                    <i class="fa fa-sort-down small text-danger"></i>
+                                       {{ (event.changeInScore*100)|number_format }}%</span>
+                                 {% else %}
+                                    <span class="text-master">
+                                    <i class="fa small text-master"></i>
+                                       {{ (event.changeInScore*100)|number_format }}%</span>
+                                 {% endif %}
+                              </h3>
+                           </div>
+                           <div class="card-footer clearfix">
+                              <div class="pull-left">by <span class="text-{{ styleClass }}-dark">John Smith</span>
+                              </div>
+                              <div class="pull-right hint-text">
+                                 Apr 23
+                              </div>
+                              <div class="clearfix"></div>
+                           </div>
                         </div>
-                        <div class="clearfix"></div>
-                     </div>
-                     <div class="card-description">
-                        <h5 class='hint-text no-margin'>Apple Inc.</h5>
-                        <h5 class="small hint-text no-margin">NASDAQ: AAPL - Nov 13 8:37 AM ET</h5>
-                        <h3>111.25 <span class="text-warning-dark"><i class="fa fa-sort-up small text-warning-dark"></i> 0.15 (0.13%)</span></h3>
-                     </div>
-                     <div class="card-footer clearfix">
-                        <div class="pull-left">by <span class="text-warning-dark">John Smith</span>
+                        <div class="event-date">
+                           <h6 class="font-montserrat all-caps hint-text m-t-0">{{ event.eventType }}</h6>
+                           <small class="fs-12 hint-text">{{ event.createdAt|ago }}</small>
                         </div>
-                        <div class="pull-right hint-text">
-                           Apr 23
-                        </div>
-                        <div class="clearfix"></div>
                      </div>
+                     <!-- timeline-content -->
                   </div>
-                  <div class="event-date">
-                     <h6 class="font-montserrat all-caps hint-text m-t-0">Shared</h6>
-                     <small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>
-                  </div>
-               </div>
-               <!-- timeline-content -->
-            </div>
-            <!-- timeline-block -->
-            <div class="timeline-block">
-               <div class="timeline-point small">
-               </div>
-               <!-- timeline-point -->
-               <div class="timeline-content">
-                  <div class="card share full-width ">
-                     <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
-                     </div>
-                     <div class="card-header clearfix">
-                        <div class="user-pic">
-                           <img alt="Profile Image" width="33" height="33" data-src-retina="assets/img/profiles/6x.jpg" data-src="assets/img/profiles/6.jpg" src="assets/img/profiles/6x.jpg">
-                        </div>
-                        <h5>Nathaniel Hamilton</h5>
-                        <h6>Shared a Tweet
-                           <span class="location semi-bold"><i class="icon-map"></i>  NYC, New York</span>
-                        </h6>
-                     </div>
-                     <div class="card-description">
-                        <p>Testing can show the presense of bugs, but not their absence.</p>
-                        <div class="via">via Twitter</div>
-                     </div>
-                  </div>
-                  <div class="event-date">
-                     <small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>
-                  </div>
-               </div>
-               <!-- timeline-content -->
-            </div>
-            <!-- timeline-block -->
-            <div class="timeline-block">
-               <div class="timeline-point small">
-               </div>
-               <!-- timeline-point -->
-               <div class="timeline-content">
-                  <div class="card share full-width">
-                     <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
-                     </div>
-                     <div class="card-header clearfix">
-                        <div class="user-pic">
-                           <img alt="Profile Image" width="33" height="33" data-src-retina="assets/img/profiles/4x.jpg" data-src="assets/img/profiles/4.jpg" src="assets/img/profiles/4x.jpg">
-                        </div>
-                        <h5>Andy Young</h5>
-                        <h6>Updated his status
-                           <span class="location semi-bold"><i class="icon-map"></i> NYC, New York</span>
-                        </h6>
-                     </div>
-                     <div class="card-description">
-                        <p>What a lovely day! I think I should go and play outside.</p>
-                     </div>
-                  </div>
-                  <div class="event-date">
-                     <small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>
-                  </div>
-               </div>
-               <!-- timeline-content -->
-            </div>
+
+               {% endfor %}
+            {% endif %}
+
             <!-- timeline-block -->
          </section>
          <!-- timeline -->

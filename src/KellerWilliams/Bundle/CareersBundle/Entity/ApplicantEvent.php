@@ -44,6 +44,20 @@ class ApplicantEvent
     private $createdAt;
 
     /**
+     * @var double
+     *
+     * @ORM\Column(name="changeInScore", type="float")
+     */
+    private $changeInScore;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="eventType", type="string", length=255)
+     */
+    private $eventType;
+
+    /**
      * @var Applicant
      * @ManyToOne(targetEntity="Applicant")
      */
@@ -104,6 +118,38 @@ class ApplicantEvent
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return float
+     */
+    public function getChangeInScore()
+    {
+        return $this->changeInScore;
+    }
+
+    /**
+     * @param float $changeInScore
+     */
+    public function setChangeInScore($changeInScore)
+    {
+        $this->changeInScore = $changeInScore;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEventType()
+    {
+        return $this->eventType;
+    }
+
+    /**
+     * @param string $eventType
+     */
+    public function setEventType($eventType)
+    {
+        $this->eventType = $eventType;
     }
 
     /**
